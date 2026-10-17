@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Безпечна початкова конфігурація: усі клієнтські запити заборонені.
+    // Не відкривати доступ без перевіреної моделі ролей і тестів правил.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
