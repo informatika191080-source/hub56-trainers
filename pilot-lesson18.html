@@ -1,8 +1,65 @@
 <!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Тестовий тренажер · Урок 18 — HUB 56</title><link rel="stylesheet" href="css/style.css"><style>
 .lesson{padding:30px 0 70px;max-width:940px}.lesson h1{font-size:clamp(28px,4vw,42px);line-height:1.2}.lesson h2{margin-top:0}.lesson-card{background:var(--surface);border:1px solid var(--stroke);border-radius:17px;padding:clamp(18px,3vw,28px);margin:20px 0}.lesson-card p,.lesson-card li{color:var(--muted)}.lesson code,.lesson pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.lesson code{color:#a6eafb}.lesson pre{overflow-x:auto;background:#071527;border:1px solid var(--stroke);padding:16px;border-radius:10px;line-height:1.65;color:#9ae5fb}.lesson-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.lesson button{background:var(--accent);color:#08152b;border:0;border-radius:10px;padding:11px 15px;font-weight:750;cursor:pointer}.lesson button:focus-visible,.lesson input:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}.lesson input{background:#091829;border:1px solid #758eaa;color:#fff;border-radius:10px;padding:13px;min-height:47px;font:inherit;width:100%;max-width:600px}.lesson label{display:block;font-weight:650;margin:13px 0 8px}.lesson-output{border-left:4px solid var(--accent);padding:13px 17px;margin-top:15px;background:#0e2941;border-radius:7px;white-space:pre-wrap}.lesson-tiny{font-size:13px;color:var(--muted)}.lesson .lesson-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.lesson .element{background:#0c2038;text-align:center;border:1px solid var(--stroke);padding:9px 2px;border-radius:8px;font-size:13px}.lesson .element span{display:block;color:var(--accent);font-size:12px}.lesson .element strong{overflow-wrap:anywhere}.choice{display:block;border:1px solid var(--stroke);border-radius:9px;padding:12px;cursor:pointer;margin:8px 0}.choice input{width:auto;min-height:0;margin-right:10px}.lesson .lesson-grid{margin:17px 0}@media(max-width:550px){.lesson .lesson-grid{grid-template-columns:repeat(4,1fr)}}
-.lesson ol,.lesson ul{padding-left:27px;margin:14px 0 20px}.lesson li{padding-left:6px;margin:10px 0;line-height:1.65}.lesson li::marker{color:var(--accent);font-weight:800}.lesson-card{line-height:1.7}.lesson h3{margin-top:30px}.practice-box{background:#0b1d32;border:1px solid #426381;border-radius:13px;padding:18px;margin:22px 0}.practice-box h4{margin:0 0 10px;font-size:18px}.practice-box select{padding:12px;border-radius:10px;border:1px solid #7991a6;background:#0a192d;color:#fff;font:inherit;max-width:100%}.lesson-output{overflow-wrap:anywhere}.lesson button:hover{filter:brightness(1.09)}</style></head><body><a href="#lesson-title" class="skip">До вмісту</a><header class="header"><div class="shell header-inner"><a href="index.html" class="brand brand-link"><span class="brand-mark">56</span><span><strong>HUB 56</strong><small>Інтерактивний простір інформатики</small></span></a><a href="teacher.html" class="header-login">Кабінет учителя</a></div></header>
-<main class="shell lesson"><p class="eyebrow">9 клас · Урок №18 · Пілот</p><h1 id="lesson-title">Списки в Python: створення та виведення</h1><p>Тестовий модуль, адаптований з навчального конспекту уроку №18. Після апробації повний курс створюватимемо послідовно від першої теми.</p>
-<section class="lesson-card"><h2>1. Що таке список і для чого він потрібний?</h2>
+.lesson ol,.lesson ul{padding-left:27px;margin:14px 0 20px}.lesson li{padding-left:6px;margin:10px 0;line-height:1.65}.lesson li::marker{color:var(--accent);font-weight:800}.lesson-card{line-height:1.7}.lesson h3{margin-top:30px}.practice-box{background:#0b1d32;border:1px solid #426381;border-radius:13px;padding:18px;margin:22px 0}.practice-box h4{margin:0 0 10px;font-size:18px}.practice-box select{padding:12px;border-radius:10px;border:1px solid #7991a6;background:#0a192d;color:#fff;font:inherit;max-width:100%}.lesson-output{overflow-wrap:anywhere}.lesson button:hover{filter:brightness(1.09)}
+/* HUB 56 · затверджена світла навчальна тема (лише пілот уроку №18) */
+:root{color-scheme:light;--bg:#f3f8ff;--surface:#fff;--stroke:#dae6f4;--text:#172b50;--muted:#526783;--accent:#168bed;--yellow:#ffcc57}
+html{scroll-padding-top:22px}
+body{background:linear-gradient(180deg,#edf6ff 0%,#f7f9ff 55%,#fff 100%);color:#172b50}
+.header{background:#fff;border-color:#dce8f5;box-shadow:0 2px 15px #a2b9db18}
+.brand strong{color:#132449}.brand small{color:#52708e}
+.header-login{color:#164473;background:#eff7ff;border-color:#bfd7f1}
+.header-login:hover{background:#e0efff}
+.lesson{max-width:1140px;padding-top:26px}
+.lesson-hero{background:linear-gradient(110deg,#dff2ff 0%,#eaf0ff 54%,#f5e9ff 100%);border:1px solid #d2e8ff;padding:clamp(24px,4vw,44px);border-radius:26px;box-shadow:0 16px 35px #8daed522;margin-bottom:18px;position:relative;overflow:hidden}
+.lesson-hero:after{content:"{ }";font:900 clamp(75px,11vw,140px)/1 ui-monospace,monospace;position:absolute;right:3%;top:17%;color:#8db4f34a;transform:rotate(-10deg);pointer-events:none}
+.lesson-hero>*{position:relative;z-index:1;max-width:790px}
+.lesson-hero .eyebrow{color:#126fb7;font-weight:800}
+.lesson-hero h1{color:#122650;font-size:clamp(30px,4.6vw,47px);margin:10px 0 14px}
+.lesson-hero p{font-size:17px;color:#466382;max-width:740px}
+.topic-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.topic-tag{font-weight:750;font-size:13px;border-radius:999px;padding:7px 13px;background:#fff;color:#245f9a}
+.topic-tag:nth-child(2){background:#ebe2ff;color:#6744b8}.topic-tag:nth-child(3){background:#d8f9e8;color:#168055}.topic-tag:nth-child(4){background:#fff0c7;color:#8f6400}
+.lesson-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 22px}
+.lesson-nav a{text-align:center;padding:15px 12px;text-decoration:none;font-weight:850;border-radius:13px;background:#fff;border:1px solid #dce5f5;color:#325382;box-shadow:0 5px 15px #b4c9df16}
+.lesson-nav a:first-child{background:#188fe9;color:white;border-color:#188fe9}
+.lesson-nav a:focus-visible{outline:3px solid #f5a52e;outline-offset:3px}
+.lesson-card{background:#fff;color:#1c3154;border:1px solid #e1eafa;box-shadow:0 8px 30px #9fb7d621;border-radius:21px;padding:clamp(19px,3vw,31px);margin:20px 0;line-height:1.75}
+.lesson-card h2{font-size:clamp(22px,3vw,30px);color:#13294e;border-bottom:1px solid #e9f0f8;padding-bottom:12px}
+.lesson-card h3{font-size:20px;color:#1768b9}
+.lesson-card p,.lesson-card li{color:#455c7b}
+.lesson-card strong{color:#1b3358}
+.lesson code{color:#0b67ae;font-weight:650}
+.lesson pre{background:#132339;border:1px solid #314867;color:#d2e9ff;border-radius:14px;box-shadow:inset 0 2px 12px #030c1c30}
+.lesson pre code{color:#b8edff;font-weight:500}
+.lesson ol li::marker{color:#198def}
+.lesson-output{background:#eaf7ff;border-left-color:#2f99e9;color:#234e76;border-radius:11px}
+.practice-box{background:#f3f7ff;border:1px solid #cfdeff;color:#17385c;border-radius:16px}
+.practice-box:nth-of-type(4n+2){background:#f8f2ff;border-color:#e3d6ff}
+.practice-box:nth-of-type(4n+3){background:#ecfff5;border-color:#c3edd8}
+.practice-box h4{color:#1759a1}
+.lesson label{color:#294467}
+.lesson input:not([type=radio]),.practice-box select{background:#fff;color:#152f52;border:1px solid #adc4df}
+.lesson button{background:#218fe8;color:#fff;box-shadow:0 4px 11px #218fe82a}
+.lesson button:hover{filter:brightness(1.06)}
+.lesson .element{background:#e8f4ff;border:1px solid #bfdaef;color:#164e7d!important}
+.lesson .element span{color:#1174c6}
+.lesson .element strong{color:#103f75}
+.choice{background:#f6f9ff;border-color:#dae5f2;color:#273f62}
+.choice:has(input:checked){border-color:#488adf;background:#e9f4ff}
+.lesson .choice input{accent-color:#168be5}
+.lesson-tiny{color:#687b98}
+.footer{background:#fff;color:#5e7490;border-color:#dce8f5}
+@media(max-width:650px){.lesson-nav{grid-template-columns:1fr 1fr 1fr;gap:5px}.lesson-nav a{padding:12px 5px;font-size:13px}.lesson-hero:after{opacity:.25}.lesson-hero p{font-size:15px}.lesson-card{margin:15px 0}}
+</style></head><body><a href="#lesson-title" class="skip">До вмісту</a><header class="header"><div class="shell header-inner"><a href="index.html" class="brand brand-link"><span class="brand-mark">56</span><span><strong>HUB 56</strong><small>Інтерактивний простір інформатики</small></span></a><a href="teacher.html" class="header-login">Кабінет учителя</a></div></header>
+<main class="shell lesson">
+<div class="lesson-hero">
+<p class="eyebrow">9 клас · Урок №18 · Тестовий модуль</p>
+<h1 id="lesson-title">Списки в Python: створення та виведення</h1>
+<p>Навчимося створювати списки, звертатися до елементів за індексом, вводити й виводити дані. Розбиратимемо кожну команду на конкретних прикладах і перевірятимемо результат у практичних вправах.</p>
+<div class="topic-tags" aria-label="Теми уроку"><span class="topic-tag">Python</span><span class="topic-tag">Списки</span><span class="topic-tag">Індекси</span><span class="topic-tag">Практика</span></div>
+</div>
+<nav class="lesson-nav" aria-label="Перехід до розділів уроку"><a href="#theory">📘 Теорія</a><a href="#practice">💻 Практика</a><a href="#self-check">🎯 Самоперевірка</a></nav>
+<section id="theory" class="lesson-card"><h2>1. Що таке список і для чого він потрібний?</h2>
 <p>Уявімо, що нам потрібно зберегти ціни восьми товарів. Можна створити вісім окремих змінних, але це незручно: доведеться окремо звертатися до кожного значення. <strong>Список</strong> дозволяє об'єднати ці значення під одним ім'ям і послідовно опрацьовувати їх.</p>
 <p><strong>Список (list)</strong> — впорядкована змінювана послідовність елементів. Елементи можуть мати різні типи даних, але в наших навчальних задачах переважно використовуються числа. Впорядкованість означає, що кожен елемент має своє місце; змінюваність — що значення можна замінювати та додавати нові елементи.</p>
 <pre><code>a = [4, -3.8, 0, 3.5, -4, 5.1, -2]</code></pre>
@@ -51,8 +108,8 @@ print(a)</code></pre>
 <p>Спочатку <code>input()</code> зчитує весь рядок. Потім метод <code>split()</code> розділяє його на частини за пропусками. Функція <code>map(float, ...)</code> застосовує перетворення <code>float</code> до кожної частини. Функція <code>list(...)</code> збирає перетворені числа в список, який оператор <code>=</code> присвоює змінній <code>a</code>. Нарешті, <code>print(a)</code> виводить результат.</p>
 <p>Наприклад, введення <code>4 5.3 12</code> створить список <code>[4.0, 5.3, 12.0]</code>. На відміну від попереднього способу, всі значення вводяться відразу через пропуски.</p>
 </section>
-<section class="lesson-card"><h2>3. Перевірка знань</h2><p>Який метод додає новий елемент у кінець списку?</p><form id="quiz"><label class="choice"><input type="radio" name="answer" value="a"> <code>len()</code></label><label class="choice"><input type="radio" name="answer" value="b"> <code>append()</code></label><label class="choice"><input type="radio" name="answer" value="c"> <code>print()</code></label><label class="choice"><input type="radio" name="answer" value="d"> <code>split()</code></label><button type="submit">Перевірити відповідь</button></form><div id="quiz-result" class="lesson-output" role="status" aria-live="polite">Оберіть відповідь і натисніть «Перевірити».</div></section>
-<section class="lesson-card"><h2>4. Практична робота — підвищення цін восьми товарів</h2>
+<section id="self-check" class="lesson-card"><h2>3. Перевірка знань</h2><p>Який метод додає новий елемент у кінець списку?</p><form id="quiz"><label class="choice"><input type="radio" name="answer" value="a"> <code>len()</code></label><label class="choice"><input type="radio" name="answer" value="b"> <code>append()</code></label><label class="choice"><input type="radio" name="answer" value="c"> <code>print()</code></label><label class="choice"><input type="radio" name="answer" value="d"> <code>split()</code></label><button type="submit">Перевірити відповідь</button></form><div id="quiz-result" class="lesson-output" role="status" aria-live="polite">Оберіть відповідь і натисніть «Перевірити».</div></section>
+<section id="practice" class="lesson-card"><h2>4. Практична робота — підвищення цін восьми товарів</h2>
 <p><strong>Умова.</strong> У списку подано ціни восьми товарів у гривнях: 60, 120, 130, 10, 40, 150, 50, 55. Через місяць кожна ціна зросла на 10 грн. Потрібно створити новий результат — список підвищених цін.</p>
 <h3>Алгоритм побудови програми</h3>
 <p><strong>Крок 1.</strong> Створіть список <code>a</code> з восьми початкових цін. Для цього використайте оператор присвоювання та квадратні дужки.</p><pre><code>a = [60, 120, 130, 10, 40, 150, 50, 55]</code></pre>
