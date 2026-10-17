@@ -36,8 +36,8 @@ form.addEventListener("submit", async event => {
   setBusy(true);
   notice("Перевіряємо дані…");
   try {
-    await signInWithEmailAndPassword(auth, form.email.value.trim(), form.password.value);
-    form.password.value = "";
+    await signInWithEmailAndPassword(auth, document.querySelector("#email").value.trim(), document.querySelector("#password").value);
+    document.querySelector("#password").value = "";
   } catch(error) {
     notice(readableError(error));
   } finally { setBusy(false); }
