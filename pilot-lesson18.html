@@ -2,16 +2,74 @@
 .lesson{padding:30px 0 70px;max-width:940px}.lesson h1{font-size:clamp(28px,4vw,42px);line-height:1.2}.lesson h2{margin-top:0}.lesson-card{background:var(--surface);border:1px solid var(--stroke);border-radius:17px;padding:clamp(18px,3vw,28px);margin:20px 0}.lesson-card p,.lesson-card li{color:var(--muted)}.lesson code,.lesson pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.lesson code{color:#a6eafb}.lesson pre{overflow-x:auto;background:#071527;border:1px solid var(--stroke);padding:16px;border-radius:10px;line-height:1.65;color:#9ae5fb}.lesson-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.lesson button{background:var(--accent);color:#08152b;border:0;border-radius:10px;padding:11px 15px;font-weight:750;cursor:pointer}.lesson button:focus-visible,.lesson input:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}.lesson input{background:#091829;border:1px solid #758eaa;color:#fff;border-radius:10px;padding:13px;min-height:47px;font:inherit;width:100%;max-width:600px}.lesson label{display:block;font-weight:650;margin:13px 0 8px}.lesson-output{border-left:4px solid var(--accent);padding:13px 17px;margin-top:15px;background:#0e2941;border-radius:7px;white-space:pre-wrap}.lesson-tiny{font-size:13px;color:var(--muted)}.lesson .lesson-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.lesson .element{background:#0c2038;text-align:center;border:1px solid var(--stroke);padding:9px 2px;border-radius:8px;font-size:13px}.lesson .element span{display:block;color:var(--accent);font-size:12px}.lesson .element strong{overflow-wrap:anywhere}.choice{display:block;border:1px solid var(--stroke);border-radius:9px;padding:12px;cursor:pointer;margin:8px 0}.choice input{width:auto;min-height:0;margin-right:10px}.lesson .lesson-grid{margin:17px 0}@media(max-width:550px){.lesson .lesson-grid{grid-template-columns:repeat(4,1fr)}}
 </style></head><body><a href="#lesson-title" class="skip">До вмісту</a><header class="header"><div class="shell header-inner"><a href="index.html" class="brand brand-link"><span class="brand-mark">56</span><span><strong>HUB 56</strong><small>Інтерактивний простір інформатики</small></span></a><a href="teacher.html" class="header-login">Кабінет учителя</a></div></header>
 <main class="shell lesson"><p class="eyebrow">9 клас · Урок №18 · Пілот</p><h1 id="lesson-title">Списки в Python: створення та виведення</h1><p>Тестовий модуль, адаптований з навчального конспекту уроку №18. Після апробації повний курс створюватимемо послідовно від першої теми.</p>
-<section class="lesson-card"><h2>1. Що таке список?</h2><p><strong>Список (list)</strong> — упорядкована змінювана послідовність елементів. Елементи записують у квадратних дужках через кому.</p><pre><code>a = [4, -3.8, 0, 3.5, -4, 5.1, -2]</code></pre><p>Індексація починається з нуля. Натисніть на номер індексу, щоб побачити відповідний елемент:</p><div class="lesson-grid" id="elements"></div><div id="index-output" class="lesson-output" role="status" aria-live="polite">Виберіть елемент списку.</div></section>
-<section class="lesson-card"><h2>2. Основні команди</h2><p><code>len(a)</code> повертає кількість елементів; <code>a.append(x)</code> додає елемент у кінець; <code>print(a)</code> виводить увесь список; <code>print(*a)</code> виводить елементи через пропуски.</p><pre><code>a = [10, 20, 30]
+<section class="lesson-card"><h2>1. Що таке список і для чого він потрібний?</h2>
+<p>Уявімо, що нам потрібно зберегти ціни восьми товарів. Можна створити вісім окремих змінних, але це незручно: доведеться окремо звертатися до кожного значення. <strong>Список</strong> дозволяє об'єднати ці значення під одним ім'ям і послідовно опрацьовувати їх.</p>
+<p><strong>Список (list)</strong> — впорядкована змінювана послідовність елементів. Елементи можуть мати різні типи даних, але в наших навчальних задачах переважно використовуються числа. Впорядкованість означає, що кожен елемент має своє місце; змінюваність — що значення можна замінювати та додавати нові елементи.</p>
+<pre><code>a = [4, -3.8, 0, 3.5, -4, 5.1, -2]</code></pre>
+<p><strong>Розбираємо запис зліва направо.</strong> <code>a</code> — ім'я змінної, яка посилається на список; <code>=</code> — оператор присвоювання; <code>[ ]</code> — квадратні дужки, між якими записані елементи; коми відокремлюють сусідні значення. У цьому списку сім елементів.</p>
+<h3>Індекси: чому перший елемент має номер 0?</h3>
+<p><strong>Індекс</strong> — номер позиції елемента у списку. У Python відлік починається з нуля: перший елемент має індекс 0, другий — 1, останній із семи — 6. Запис <code>a[2]</code> означає «взяти зі списку <code>a</code> елемент з індексом 2»; це число <code>0</code>.</p>
+<p>Натисніть будь-який елемент нижче, щоб дослідити його індекс та значення:</p><div class="lesson-grid" id="elements"></div><div id="index-output" class="lesson-output" role="status" aria-live="polite">Виберіть елемент списку.</div>
+<h3>Як змінити елемент?</h3><pre><code>a = [4, -3.8, 0, 3.5, -4, 5.1, -2]
+a[5] = 3
+print(a[5])</code></pre>
+<p><strong>Перший рядок</strong> створює список. <strong>Другий рядок</strong> замінює шостий елемент (індекс 5) на число 3. <strong>Третій рядок</strong> виводить значення цього елемента. <strong>Результат на екрані:</strong> <code>3</code>.</p>
+</section>
+<section class="lesson-card"><h2>2. Функції та методи: окремий приклад для кожної команди</h2>
+<p><strong>Функція</strong> — іменована операція, яку можна викликати для виконання певної дії та, за потреби, отримання результату. <strong>Метод</strong> — операція, яку викликають у певного об'єкта, наприклад списку. У записі <code>a.append(40)</code> метод <code>append()</code> викликається для списку <code>a</code>. Значення в круглих дужках називають <strong>аргументом</strong>.</p>
+<h3>2.1. Функція len() — визначення кількості елементів</h3>
+<pre><code>a = [10, 20, 30]
+n = len(a)
+print(n)</code></pre>
+<p><strong>Рядок 1.</strong> Створюємо список <code>a</code> із трьох чисел. <strong>Рядок 2.</strong> У виклик <code>len(a)</code> передаємо як аргумент список <code>a</code>. Функція підраховує елементи й повертає число 3. Оператор <code>=</code> присвоює це число змінній <code>n</code>. <strong>Рядок 3.</strong> <code>print(n)</code> показує отримане значення.</p><div class="lesson-output"><strong>Результат:</strong> 3</div>
+<p><strong>Важливо:</strong> кількість елементів — 3, але індекси цього списку — 0, 1 і 2. Не плутайте кількість з останнім індексом.</p>
+<h3>2.2. Метод append() — додавання елемента в кінець</h3>
+<pre><code>a = [10, 20, 30]
+a.append(40)
+print(a)</code></pre>
+<p><strong>Рядок 1.</strong> Створюємо список із трьох чисел. <strong>Рядок 2.</strong> Пишемо ім'я списку <code>a</code>, крапку, назву методу <code>append</code> та круглі дужки. Усередині дужок записуємо <code>40</code> — елемент, який потрібно додати. <strong>Рядок 3.</strong> Виводимо список після зміни.</p><div class="lesson-output"><strong>Результат:</strong> [10, 20, 30, 40]</div>
+<p>Метод <code>append()</code> додає <strong>один елемент</strong> наприкінці списку. Він змінює сам список; не потрібно записувати <code>a = a.append(40)</code>.</p>
+<h3>2.3. Функція print() — виведення списку або одного елемента</h3>
+<pre><code>a = [10, 20, 30]
 print(a)
-print(a[0])
-print(*a)</code></pre><p>Приклади виведення: <code>[10, 20, 30]</code>, <code>10</code>, <code>10 20 30</code>.</p></section>
+print(a[0])</code></pre>
+<p><strong>Рядок 1.</strong> Створюємо список. <strong>Рядок 2.</strong> Передаємо до <code>print()</code> список <code>a</code> цілком — Python показує квадратні дужки й коми. <strong>Рядок 3.</strong> Передаємо тільки <code>a[0]</code>, тобто елемент з індексом нуль.</p><div class="lesson-output"><strong>Результат на двох рядках:</strong><br>[10, 20, 30]<br>10</div>
+<h3>2.4. print(*a) — виведення елементів через пропуски</h3>
+<pre><code>a = [10, 20, 30]
+print(*a)</code></pre>
+<p>Символ <code>*</code> перед ім'ям списку <code>a</code> розпаковує його елементи в окремі аргументи функції <code>print()</code>. За замовчуванням <code>print()</code> ставить між аргументами пропуски. <strong>Результат:</strong> <code>10 20 30</code> — без квадратних дужок і ком.</p>
+<h3>2.5. Введення значень по одному: input(), float() і append()</h3>
+<pre><code>a = []
+for i in range(3):
+    x = float(input("Уведіть значення елемента списку &gt; "))
+    a.append(x)
+print(a)</code></pre>
+<p><strong>Рядок 1:</strong> <code>a = []</code> створює порожній список. <strong>Рядок 2:</strong> <code>for</code> починає цикл; <code>range(3)</code> забезпечує три повторення, а <code>i</code> послідовно набуває значень 0, 1, 2. Двокрапка й відступ визначають команди всередині циклу.</p>
+<p><strong>Рядок 3:</strong> <code>input("Уведіть значення елемента списку &gt; ")</code> показує підказку й отримує текст із клавіатури. <code>float(...)</code> перетворює введений текст на дійсне число. Отримане число записується у змінну <code>x</code>. <strong>Рядок 4:</strong> <code>a.append(x)</code> додає його до списку. <strong>Рядок 5:</strong> <code>print(a)</code> виводить сформований список.</p>
+<p>Якщо послідовно ввести <code>4</code>, <code>5.3</code>, <code>12</code>, результатом буде <code>[4.0, 5.3, 12.0]</code>. Тут натискання Enter потрібне після кожного числа.</p>
+<h3>2.6. Введення одного рядка: split(), map(), list()</h3>
+<pre><code>a = list(map(float, input("Уведіть довжини сторін квадратів &gt; ").split()))
+print(a)</code></pre>
+<p>Спочатку <code>input()</code> зчитує весь рядок. Потім метод <code>split()</code> розділяє його на частини за пропусками. Функція <code>map(float, ...)</code> застосовує перетворення <code>float</code> до кожної частини. Функція <code>list(...)</code> збирає перетворені числа в список, який оператор <code>=</code> присвоює змінній <code>a</code>. Нарешті, <code>print(a)</code> виводить результат.</p>
+<p>Наприклад, введення <code>4 5.3 12</code> створить список <code>[4.0, 5.3, 12.0]</code>. На відміну від попереднього способу, всі значення вводяться відразу через пропуски.</p>
+</section>
 <section class="lesson-card"><h2>3. Перевірка знань</h2><p>Який метод додає новий елемент у кінець списку?</p><form id="quiz"><label class="choice"><input type="radio" name="answer" value="a"> <code>len()</code></label><label class="choice"><input type="radio" name="answer" value="b"> <code>append()</code></label><label class="choice"><input type="radio" name="answer" value="c"> <code>print()</code></label><label class="choice"><input type="radio" name="answer" value="d"> <code>split()</code></label><button type="submit">Перевірити відповідь</button></form><div id="quiz-result" class="lesson-output" role="status" aria-live="polite">Оберіть відповідь і натисніть «Перевірити».</div></section>
-<section class="lesson-card"><h2>4. Практика — ціни восьми товарів</h2><p>Вихідні ціни: <strong>60, 120, 130, 10, 40, 150, 50, 55 грн</strong>. Через місяць кожна ціна зросла на 10 грн. Введіть <strong>вісім нових цін</strong> через пропуски.</p><pre><code>a = [60, 120, 130, 10, 40, 150, 50, 55]
+<section class="lesson-card"><h2>4. Практична робота — підвищення цін восьми товарів</h2>
+<p><strong>Умова.</strong> У списку подано ціни восьми товарів у гривнях: 60, 120, 130, 10, 40, 150, 50, 55. Через місяць кожна ціна зросла на 10 грн. Потрібно створити новий результат — список підвищених цін.</p>
+<h3>Алгоритм побудови програми</h3>
+<p><strong>Крок 1.</strong> Створіть список <code>a</code> з восьми початкових цін. Для цього використайте оператор присвоювання та квадратні дужки.</p><pre><code>a = [60, 120, 130, 10, 40, 150, 50, 55]</code></pre>
+<p><strong>Крок 2.</strong> Додайте цикл <code>for i in range(8):</code>. Ключове слово <code>for</code> організовує повторення, змінна <code>i</code> є індексом поточного елемента, а <code>range(8)</code> задає послідовність індексів від 0 до 7. Двокрапка позначає початок тіла циклу.</p><pre><code>for i in range(8):
+    a[i] = a[i] + 10</code></pre>
+<p><strong>Крок 3.</strong> У тілі циклу записуйте команду з відступом у чотири пробіли. Праворуч <code>a[i] + 10</code> обчислює нову ціну, ліворуч <code>a[i]</code> указує, куди записати результат. На кожному повторенні змінюється один елемент.</p>
+<p><strong>Крок 4.</strong> Після циклу без відступу додайте <code>print(a)</code>, щоб вивести вже змінений список.</p>
+<h3>Повний правильний код</h3><pre><code>a = [60, 120, 130, 10, 40, 150, 50, 55]
 for i in range(8):
     a[i] = a[i] + 10
-print(a)</code></pre><label for="price-answer">Нові ціни (через пропуски)</label><input id="price-answer" autocomplete="off" spellcheck="false" placeholder="Вісім цілих чисел"><div class="lesson-actions" style="margin-top:14px"><button id="check-prices" type="button">Перевірити результат</button><button id="show-hint" type="button">Підказка</button></div><div id="price-result" class="lesson-output" role="status" aria-live="polite">Введіть результат обчислень.</div></section>
+print(a)</code></pre>
+<p><strong>Очікуваний результат:</strong> <code>[70, 130, 140, 20, 50, 160, 60, 65]</code>. Зверніть увагу: у списку залишилося вісім елементів; змінилися тільки їхні значення.</p>
+<h3>Перевірте себе</h3><p>Введіть <strong>вісім нових цін</strong> через пропуски. Система порівняє кожну позицію з очікуваним значенням.</p>
+<label for="price-answer">Нові ціни (через пропуски)</label><input id="price-answer" autocomplete="off" spellcheck="false" placeholder="Вісім цілих чисел"><div class="lesson-actions" style="margin-top:14px"><button id="check-prices" type="button">Перевірити результат</button><button id="show-hint" type="button">Підказка</button></div><div id="price-result" class="lesson-output" role="status" aria-live="polite">Введіть результат обчислень.</div>
+<p><strong>Типова помилка:</strong> використати <code>range(7)</code> — тоді останній товар залишиться без підвищення. Для восьми елементів потрібні індекси від 0 до 7, тобто <code>range(8)</code>.</p></section>
 <section class="lesson-card"><h2>5. Що ми перевіряємо під час тестування?</h2><p>Чи зрозумілі пояснення, чи працюють інтерактивні елементи, чи правильно перевіряються відповіді та чи зручно використовувати модуль на смартфоні.</p><p class="lesson-tiny"><strong>Обмеження:</strong> ця версія не виконує Python-код. Вона перевіряє відповіді на заздалегідь визначені завдання у браузері. Оцінки не записуються, особисті дані не збираються, Firestore не використовується.</p></section>
 <p class="lesson-tiny">Автор навчального конспекту: Левін М.П. Матеріал спеціально розроблений для гімназії №56. Вебмодуль — тестова адаптація.</p><p><a href="teacher.html">← До кабінету вчителя</a></p></main><footer class="footer"><div class="shell">HUB 56 · Тестовий модуль · Без збереження результатів</div></footer>
 <script>
