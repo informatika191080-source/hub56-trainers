@@ -50,6 +50,8 @@ body{background:linear-gradient(180deg,#edf6ff 0%,#f7f9ff 55%,#fff 100%);color:#
 .lesson-tiny{color:#687b98}
 .footer{background:#fff;color:#5e7490;border-color:#dce8f5}
 @media(max-width:650px){.lesson-nav{grid-template-columns:1fr 1fr 1fr;gap:5px}.lesson-nav a{padding:12px 5px;font-size:13px}.lesson-hero:after{opacity:.25}.lesson-hero p{font-size:15px}.lesson-card{margin:15px 0}}
+
+.code-steps{list-style:decimal;padding-left:30px;margin:20px 0}.code-step{padding:17px 18px 19px!important;margin:12px 0!important;background:#f5f9ff;border:1px solid #d4e4f5;border-radius:14px}.code-step:nth-child(even){background:#f7f2ff;border-color:#e3d9f7}.code-step p{margin:9px 0}.lesson .code-entry{display:block;box-sizing:border-box;width:100%;max-width:none;min-height:66px;resize:vertical;font-family:ui-monospace,Consolas,monospace;line-height:1.6;tab-size:4;white-space:pre;overflow-x:auto;background:white;color:#143455;border:1px solid #9cb9d9;border-radius:10px;padding:12px 14px;font-size:15px}.lesson .code-entry:focus{outline:3px solid #80cfff;outline-offset:1px}.code-live{white-space:pre;overflow-x:auto;min-height:100px}.code-step .lesson-tiny{margin-top:7px}.code-step label{font-weight:750}.lesson #reset-code{background:#e9eafa;color:#334879;box-shadow:none}.lesson #reset-code:hover{background:#dbdef5}@media(max-width:550px){.code-steps{padding-left:24px}.code-step{padding:13px!important}}
 </style></head><body><a href="#lesson-title" class="skip">До вмісту</a><header class="header"><div class="shell header-inner"><a href="index.html" class="brand brand-link"><span class="brand-mark">56</span><span><strong>HUB 56</strong><small>Інтерактивний простір інформатики</small></span></a><a href="teacher.html" class="header-login">Кабінет учителя</a></div></header>
 <main class="shell lesson">
 <div class="lesson-hero">
@@ -111,17 +113,17 @@ print(a)</code></pre>
 <section id="self-check" class="lesson-card"><h2>3. Перевірка знань</h2><p>Який метод додає новий елемент у кінець списку?</p><form id="quiz"><label class="choice"><input type="radio" name="answer" value="a"> <code>len()</code></label><label class="choice"><input type="radio" name="answer" value="b"> <code>append()</code></label><label class="choice"><input type="radio" name="answer" value="c"> <code>print()</code></label><label class="choice"><input type="radio" name="answer" value="d"> <code>split()</code></label><button type="submit">Перевірити відповідь</button></form><div id="quiz-result" class="lesson-output" role="status" aria-live="polite">Оберіть відповідь і натисніть «Перевірити».</div></section>
 <section id="practice" class="lesson-card"><h2>4. Практична робота — підвищення цін восьми товарів</h2>
 <p><strong>Умова.</strong> У списку подано ціни восьми товарів у гривнях: 60, 120, 130, 10, 40, 150, 50, 55. Через місяць кожна ціна зросла на 10 грн. Потрібно створити новий результат — список підвищених цін.</p>
-<h3>Алгоритм побудови програми</h3>
-<p><strong>Крок 1.</strong> Створіть список <code>a</code> з восьми початкових цін. Для цього використайте оператор присвоювання та квадратні дужки.</p><pre><code>a = [60, 120, 130, 10, 40, 150, 50, 55]</code></pre>
-<p><strong>Крок 2.</strong> Додайте цикл <code>for i in range(8):</code>. Ключове слово <code>for</code> організовує повторення, змінна <code>i</code> є індексом поточного елемента, а <code>range(8)</code> задає послідовність індексів від 0 до 7. Двокрапка позначає початок тіла циклу.</p><pre><code>for i in range(8):
-    a[i] = a[i] + 10</code></pre>
-<p><strong>Крок 3.</strong> У тілі циклу записуйте команду з відступом у чотири пробіли. Праворуч <code>a[i] + 10</code> обчислює нову ціну, ліворуч <code>a[i]</code> указує, куди записати результат. На кожному повторенні змінюється один елемент.</p>
-<p><strong>Крок 4.</strong> Після циклу без відступу додайте <code>print(a)</code>, щоб вивести вже змінений список.</p>
-<h3>Повний правильний код</h3><pre><code>a = [60, 120, 130, 10, 40, 150, 50, 55]
-for i in range(8):
-    a[i] = a[i] + 10
-print(a)</code></pre>
-<p><strong>Очікуваний результат:</strong> <code>[70, 130, 140, 20, 50, 160, 60, 65]</code>. Зверніть увагу: у списку залишилося вісім елементів; змінилися тільки їхні значення.</p>
+<h3>Алгоритм побудови програми — пишемо код самостійно</h3>
+<p>Прочитайте пояснення кожного кроку, а потім <strong>введіть відповідний рядок Python</strong> у поле під ним. Внизу автоматично складатиметься повна програма. Жоден рядок не буде дописаний за вас.</p>
+<ol class="code-steps"><li class="code-step"><strong>Крок 1. Створіть список</strong><p>Задайте змінну a та запишіть у квадратних дужках усі вісім початкових цін. Елементи розділіть комами.</p><label for="code-line-0">Ваш код — рядок 1</label><textarea id="code-line-0" class="code-entry" rows="2" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="code-tip-0"></textarea><div id="code-tip-0" class="lesson-tiny">Поле спочатку порожнє. Ви можете виправляти код у будь-який момент.</div></li><li class="code-step"><strong>Крок 2. Запишіть заголовок циклу</strong><p>Використайте ключове слово for, змінну i та функцію range(8). Не забудьте двокрапку наприкінці.</p><label for="code-line-1">Ваш код — рядок 2</label><textarea id="code-line-1" class="code-entry" rows="2" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="code-tip-1"></textarea><div id="code-tip-1" class="lesson-tiny">Поле спочатку порожнє. Ви можете виправляти код у будь-який момент.</div></li><li class="code-step"><strong>Крок 3. Змініть поточну ціну</strong><p>Запишіть присвоювання для елемента a[i]: додайте до його попереднього значення 10. Цей рядок має бути всередині циклу, тому використайте відступ.</p><label for="code-line-2">Ваш код — рядок 3</label><textarea id="code-line-2" class="code-entry" rows="2" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="code-tip-2"></textarea><div id="code-tip-2" class="lesson-tiny">Поле спочатку порожнє. Ви можете виправляти код у будь-який момент.</div></li><li class="code-step"><strong>Крок 4. Виведіть результат</strong><p>Після завершення циклу виведіть увесь список за допомогою функції print(). Цей рядок не має відступу.</p><label for="code-line-3">Ваш код — рядок 4</label><textarea id="code-line-3" class="code-entry" rows="2" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="code-tip-3"></textarea><div id="code-tip-3" class="lesson-tiny">Поле спочатку порожнє. Ви можете виправляти код у будь-який момент.</div></li></ol>
+<div class="practice-box"><h3>Моя програма — зібраний код</h3>
+<p>Код нижче <strong>автоматично оновлюється</strong> під час введення рядків. Зверніть увагу на відступ перед командою всередині циклу.</p>
+<pre class="code-live"><code id="assembled-code"># Почніть вводити рядки коду вище...</code></pre>
+<div class="lesson-actions"><button type="button" id="check-code">Перевірити мій код</button><button type="button" id="reset-code">Очистити всі поля</button></div>
+<div id="code-feedback" class="lesson-output" role="status" aria-live="polite">Напишіть чотири рядки й натисніть «Перевірити мій код».</div>
+<p class="lesson-tiny">Перевірка виконується лише в цьому браузері. Вона зіставляє введений код із очікуваною структурою вправи; це не виконання довільної програми Python.</p>
+</div>
+<p><strong>Після правильної перевірки</strong> можна перейти до покрокового виконання циклу та самостійно визначити вісім нових цін.</p>
 <div class="practice-box"><h4>Мініпрактика 4. Покроковий цикл for</h4><p>Натискайте «Наступний крок» і спостерігайте, як змінюються ціни товарів та індекс <code>i</code>.</p><div class="lesson-actions"><button id="loop-next" type="button">Наступний крок</button><button id="loop-reset" type="button">Скинути</button></div><div id="loop-feedback" class="lesson-output" role="status" aria-live="polite">Початковий список: [60, 120, 130, 10, 40, 150, 50, 55].</div></div><h3>Перевірте себе</h3><p>Введіть <strong>вісім нових цін</strong> через пропуски. Система порівняє кожну позицію з очікуваним значенням.</p>
 <label for="price-answer">Нові ціни (через пропуски)</label><input id="price-answer" autocomplete="off" spellcheck="false" placeholder="Вісім цілих чисел"><div class="lesson-actions" style="margin-top:14px"><button id="check-prices" type="button">Перевірити результат</button><button id="show-hint" type="button">Підказка</button></div><div id="price-result" class="lesson-output" role="status" aria-live="polite">Введіть результат обчислень.</div>
 <p><strong>Типова помилка:</strong> використати <code>range(7)</code> — тоді останній товар залишиться без підвищення. Для восьми елементів потрібні індекси від 0 до 7, тобто <code>range(8)</code>.</p></section>
@@ -161,4 +163,46 @@ const initial=[60,120,130,10,40,150,50,55];let step=0;let prices=[...initial];
 const loopOutput=document.getElementById("loop-feedback");
 document.getElementById("loop-next").addEventListener("click",()=>{if(step===8){loopOutput.textContent="Усі вісім кроків виконано. Підсумковий список: ["+prices.join(", ")+"]";return;}const before=prices[step];prices[step]+=10;loopOutput.textContent="Ітерація "+(step+1)+": i = "+step+", a["+step+"] = "+before+" + 10 = "+prices[step]+".\nПоточний список: ["+prices.join(", ")+"].";step++;});
 document.getElementById("loop-reset").addEventListener("click",()=>{step=0;prices=[...initial];loopOutput.textContent="Початковий список: ["+prices.join(", ")+"].";});
+
+(function(){
+  "use strict";
+  const fields=[0,1,2,3].map(i=>document.getElementById("code-line-"+i));
+  const assembled=document.getElementById("assembled-code");
+  const feedback=document.getElementById("code-feedback");
+  const render=()=>{
+    const lines=fields.map(f=>f.value.replace(/\r/g,"").replace(/\n/g,""));
+    assembled.textContent=lines.some(line=>line.trim())?lines.map((line,i)=>line||("# Рядок "+(i+1)+" ще порожній")).join("\n"):"# Почніть вводити рядки коду вище...";
+    feedback.textContent="Код оновлено. Натисніть «Перевірити мій код», коли завершите.";
+  };
+  fields.forEach(field=>{
+    field.addEventListener("input",render);
+    field.addEventListener("keydown",event=>{
+      if(event.key==="Tab"&&!event.shiftKey&&field===fields[2]){
+        event.preventDefault();
+        field.setRangeText("    ",field.selectionStart,field.selectionEnd,"end");
+        render();
+      }
+      if(event.key==="Enter"){event.preventDefault();}
+    });
+  });
+  document.getElementById("reset-code").addEventListener("click",()=>{
+    fields.forEach(field=>field.value="");
+    render();
+    feedback.textContent="Усі поля очищено. Почніть з першого рядка.";
+    fields[0].focus();
+  });
+  document.getElementById("check-code").addEventListener("click",()=>{
+    const raw=fields.map(f=>f.value.replace(/\r/g,"").replace(/\n/g,""));
+    const details=[
+      {ok:/^\s*a\s*=\s*\[\s*60\s*,\s*120\s*,\s*130\s*,\s*10\s*,\s*40\s*,\s*150\s*,\s*50\s*,\s*55\s*\]\s*$/.test(raw[0]),tip:"Рядок 1: потрібно присвоїти змінній a список із восьми цін у заданому порядку."},
+      {ok:/^\s*for\s+i\s+in\s+range\s*\(\s*8\s*\)\s*:\s*$/.test(raw[1]),tip:"Рядок 2: перевірте for, змінну i, range(8) та двокрапку."},
+      {ok:/^[ \t]+a\s*\[\s*i\s*\]\s*=\s*a\s*\[\s*i\s*\]\s*\+\s*10\s*$/.test(raw[2]),tip:"Рядок 3: потрібен відступ і команда збільшення a[i] на 10. Напишіть a[i] = a[i] + 10."},
+      {ok:/^print\s*\(\s*a\s*\)\s*$/.test(raw[3]),tip:"Рядок 4: запишіть print(a) без відступу — після циклу."}
+    ];
+    const wrong=details.filter(x=>!x.ok);
+    if(wrong.length===0){feedback.textContent="Молодець! Усі чотири рядки правильні, порядок команд збережено. Програма збільшить кожну ціну на 10 грн. Тепер спробуйте визначити результат.";return;}
+    feedback.textContent="Попрацюй ще! "+wrong.map(x=>x.tip).join("\n");
+  });
+  render();
+})();
 </script></body></html>
