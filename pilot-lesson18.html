@@ -244,7 +244,7 @@ for(const task of tasks){
   document.querySelectorAll('[data-example="'+task.id+'"]').forEach(example=>example.hidden=hard);
  }));
  document.querySelector('[data-check-task="'+task.id+'"]').addEventListener("click",()=>{
-  const actual=inputs.map(i=>i.value.replace(/\r/g,"").replace(/\n/g,"")));
+  const actual=inputs.map(i=>i.value.replace(/\r/g,"").replace(/\n/g,""));
   const normalize=line=>line.trim().replace(/\s+/g," ");
   const wrong=[];
   task.lines.forEach((expected,index)=>{
