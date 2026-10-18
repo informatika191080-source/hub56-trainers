@@ -42,13 +42,13 @@
 <div class="teacher-head"><div><p class="eyebrow">Робочий простір · прототип</p><h1 id="page-title">Кабінет учителя</h1><p class="teacher-subtitle">Панель підготовки інтерактивних занять з інформатики</p></div><span class="demo-pill">Демонстраційний режим</span></div>
 <p id="teacher-status" class="teacher-status" role="status" aria-live="polite">Перевіряємо авторизацію…</p>
 <div id="teacher-dashboard" class="teacher-dashboard" hidden>
-<nav class="teacher-nav" aria-label="Розділи кабінету">
-<button type="button" class="teacher-tab" data-tab="overview" aria-controls="panel-overview" aria-selected="true">Огляд</button>
-<button type="button" class="teacher-tab" data-tab="classes" aria-controls="panel-classes" aria-selected="false">Класи</button>
-<button type="button" class="teacher-tab" data-tab="activities" aria-controls="panel-activities" aria-selected="false">Завдання</button>
-<button type="button" class="teacher-tab" data-tab="results" aria-controls="panel-results" aria-selected="false">Результати</button>
+<nav class="teacher-nav" role="tablist" aria-label="Розділи кабінету">
+<button type="button" class="teacher-tab" data-tab="overview" id="tab-overview" role="tab" aria-controls="panel-overview" aria-selected="true">Огляд</button>
+<button type="button" class="teacher-tab" data-tab="classes" id="tab-classes" role="tab" aria-controls="panel-classes" aria-selected="false">Класи</button>
+<button type="button" class="teacher-tab" data-tab="activities" id="tab-activities" role="tab" aria-controls="panel-activities" aria-selected="false">Завдання</button>
+<button type="button" class="teacher-tab" data-tab="results" id="tab-results" role="tab" aria-controls="panel-results" aria-selected="false">Результати</button>
 </nav>
-<section id="panel-overview" class="teacher-panel" aria-label="Огляд кабінету">
+<section id="panel-overview" class="teacher-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0" aria-label="Огляд кабінету">
 <h2>Огляд платформи</h2><p class="teacher-lead">Це макет майбутнього робочого місця. Наведені числа показують структуру, а не фактичну активність.</p>
 <div class="teacher-cards">
 <article class="teacher-card"><span class="teacher-badge">Навчальні рівні</span><div class="teacher-count">5</div><h3>5–9 класи</h3><p>Передбачені окремі добірки завдань за класами.</p></article>
@@ -57,7 +57,7 @@
 </div>
 <div class="teacher-note"><strong>Безпека:</strong> сторінка не читає та не записує даних Firestore. Всі елементи панелі працюють тільки в браузері та не є обліком занять.</div>
 </section>
-<section id="panel-classes" class="teacher-panel" aria-label="Класи" hidden>
+<section id="panel-classes" class="teacher-panel" role="tabpanel" aria-labelledby="tab-classes" tabindex="0" aria-label="Класи" hidden>
 <h2>Класи</h2><p class="teacher-lead">Оберіть клас, щоб побачити демонстраційний опис його навчального простору.</p>
 <div class="teacher-list" id="class-selectors">
 <button class="class-selector" type="button" data-grade="5" aria-pressed="true"><strong>5 клас</strong><span>Базові навички</span></button>
@@ -69,7 +69,7 @@
 <p class="teacher-lead"><a href="pilot-lesson18.html" class="primary">Відкрити тестовий модуль уроку №18 →</a></p>
 <div class="teacher-preview" id="grade-preview" aria-live="polite"><h3>5 клас</h3><p>Тут згодом з’являться тренажери, вікторини та інтерактивні аркуші для вибраного класу.</p></div>
 </section>
-<section id="panel-activities" class="teacher-panel" aria-label="Завдання" hidden>
+<section id="panel-activities" class="teacher-panel" role="tabpanel" aria-labelledby="tab-activities" tabindex="0" aria-label="Завдання" hidden>
 <h2>Завдання</h2><p class="teacher-lead">Заплановані формати майбутніх занять.</p>
 <div class="teacher-cards">
 <article class="teacher-card"><span class="teacher-badge">У розробці</span><h3>Вікторини</h3><p>Запитання з автоматичною перевіркою відповідей.</p></article>
@@ -78,7 +78,7 @@
 </div>
 <div class="teacher-note">Кнопки створення й публікації будуть додані після розроблення моделі завдань, правил доступу та перевірки безпеки.</div>
 </section>
-<section id="panel-results" class="teacher-panel" aria-label="Результати" hidden>
+<section id="panel-results" class="teacher-panel" role="tabpanel" aria-labelledby="tab-results" tabindex="0" aria-label="Результати" hidden>
 <h2>Результати</h2><p class="teacher-lead">Розділ майбутнього перегляду виконаних робіт і оцінок.</p>
 <div class="teacher-preview"><h3>Дані ще не підключено</h3><p>У цьому прототипі немає списків учнів, персональних даних, оцінок чи журналу активності.</p></div>
 <h3>Що потрібно перед запуском</h3><ol class="teacher-steps"><li><strong>Правила Firestore</strong> — перевірити серверні права вчителя та учня.</li><li><strong>Модель даних</strong> — визначити структуру класів, занять та спроб.</li><li><strong>Надійне оцінювання</strong> — не довіряти балам, які надсилає браузер.</li><li><strong>Тестування</strong> — перевірити доступ із різних облікових записів.</li></ol>
