@@ -41,9 +41,9 @@ onAuthStateChanged(auth, async user => {
   roleMessage.textContent = "Перевіряємо роль облікового запису…";
   notice("Вхід успішний. Перевіряємо права доступу…");
   try {
-    const token = await user.getIdTokenResult();
+    const token = await user.getIdTokenResult(true);
     if (currentRevision !== authRevision || auth.currentUser?.uid !== user.uid) return;
-    if (token.claims.teacher === true) {
+    if (token.claims.role === "teacher") {
       roleMessage.textContent = "Роль учителя підтверджена. Можна перейти до кабінету вчителя.";
       teacherLink.hidden = false;
       notice("Вхід успішний. Доступ до кабінету вчителя дозволено.");
