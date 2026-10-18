@@ -122,7 +122,6 @@ values.forEach((value,index)=>{
  button.addEventListener("click",()=>{document.getElementById("index-output").textContent="a["+index+"] = "+value+". Індекс — "+index+", значення елемента — "+value+".";});
  elements.append(button);
 });
-document.getElementById("quiz").addEventListener("submit",e=>{e.preventDefault();const checked=document.querySelector('input[name="answer"]:checked');const output=document.getElementById("quiz-result");if(!checked){output.textContent="Спочатку виберіть відповідь.";return;} output.textContent=checked.value==="b"?"Правильно! Метод append() додає один новий елемент у кінець списку.":"Поки неправильно. len() визначає кількість елементів, print() виводить дані, split() розділяє рядок. Для додавання елемента використовується append().";});
 const idxBtn=document.getElementById("check-index");
 idxBtn.addEventListener("click",()=>{const raw=document.getElementById("index-answer").value.trim();document.getElementById("index-feedback").textContent=raw==="-4"?"Правильно: a[4] — п'ятий елемент, значення -4.":"Перевірте ще раз: індекси починаються з нуля, тому a[4] — п'ятий елемент.";});
 let appended=[10,20,30];
