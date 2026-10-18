@@ -15,7 +15,20 @@ function selectTab(key) {
   }
   for (const panel of panels) panel.hidden = panel.id !== "panel-" + key;
 }
-tabs.forEach(tab => tab.addEventListener("click", () => selectTab(tab.dataset.tab)));
+tabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => selectTab(tab.dataset.tab));
+  tab.addEventListener("keydown", event => {
+    let next = index;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % tabs.length;
+    else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (index - 1 + tabs.length) % tabs.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    selectTab(tabs[next].dataset.tab);
+    tabs[next].focus();
+  });
+});
 selectTab("overview");
 
 const gradePreview = document.querySelector("#grade-preview");
