@@ -8,6 +8,9 @@ const panel = document.querySelector("#account-panel");
 const accountEmail = document.querySelector("#account-email");
 const button = document.querySelector("#login-button");
 const logout = document.querySelector("#logout-button");
+const roleMessage = document.querySelector("#account-role-message");
+const teacherLink = document.querySelector("#teacher-cabinet-link");
+let authRevision = 0;
 
 function notice(text) { message.textContent = text; }
 function setBusy(busy) { button.disabled = busy; logout.disabled = busy; }
@@ -24,12 +27,40 @@ function readableError(error) {
   }
 }
 
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async user => {
+  const currentRevision = ++authRevision;
   form.hidden = Boolean(user);
   panel.hidden = !user;
+  teacherLink.hidden = true;
   accountEmail.textContent = user?.email ?? "";
-  notice(user ? "Вхід успішний. Ролі та доступ до результатів будуть додані пізніше." : "Увійдіть за тестовими обліковими даними.");
-}, () => notice("Не вдалося перевірити стан входу. Перевірте підключення."));
+  if (!user) {
+    roleMessage.textContent = "";
+    notice("Увійдіть за тестовими обліковими даними.");
+    return;
+  }
+  roleMessage.textContent = "Перевіряємо роль облікового запису…";
+  notice("Вхід успішний. Перевіряємо права доступу…");
+  try {
+    const token = await user.getIdTokenResult();
+    if (currentRevision !== authRevision || auth.currentUser?.uid !== user.uid) return;
+    if (token.claims.teacher === true) {
+      roleMessage.textContent = "Роль учителя підтверджена. Можна перейти до кабінету вчителя.";
+      teacherLink.hidden = false;
+      notice("Вхід успішний. Доступ до кабінету вчителя дозволено.");
+    } else {
+      roleMessage.textContent = "Роль учителя не підтверджена. Кабінет учителя недоступний для цього облікового запису.";
+      notice("Вхід успішний. Для кабінету вчителя потрібні відповідні права.");
+    }
+  } catch {
+    if (currentRevision !== authRevision || auth.currentUser?.uid !== user.uid) return;
+    roleMessage.textContent = "Не вдалося перевірити роль. Спробуйте оновити сторінку.";
+    notice("Вхід успішний, але перевірка прав доступу не завершилася.");
+  }
+}, () => {
+  ++authRevision;
+  teacherLink.hidden = true;
+  notice("Не вдалося перевірити стан входу. Перевірте підключення.");
+});
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
