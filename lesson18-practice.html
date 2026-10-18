@@ -104,7 +104,7 @@ document.getElementById("loop-reset").addEventListener("click",()=>{step=0;price
   const assembled=document.getElementById("assembled-code");
   const feedback=document.getElementById("code-feedback");
   const render=()=>{
-    const lines=fields.map(f=>f.value.replace(/\r/g,"").replace(/\n/g,""));
+    const lines=fields.map(f=>f.value.replace(/\r/g,""));
     assembled.textContent=lines.some(line=>line.trim())?lines.map((line,i)=>line||("# Рядок "+(i+1)+" ще порожній")).join("\n"):"# Почніть вводити рядки коду вище...";
     feedback.textContent="Код оновлено. Натисніть «Перевірити мій код», коли завершите.";
   };
@@ -126,16 +126,17 @@ document.getElementById("loop-reset").addEventListener("click",()=>{step=0;price
     fields[0].focus();
   });
   document.getElementById("check-code").addEventListener("click",()=>{
-    const raw=fields.map(f=>f.value.replace(/\r/g,"").replace(/\n/g,""));
-    const details=[
-      {ok:/^\s*a\s*=\s*\[\s*60\s*,\s*120\s*,\s*130\s*,\s*10\s*,\s*40\s*,\s*150\s*,\s*50\s*,\s*55\s*\]\s*$/.test(raw[0]),tip:"Рядок 1: потрібно присвоїти змінній a список із восьми цін у заданому порядку."},
-      {ok:/^\s*for\s+i\s+in\s+range\s*\(\s*8\s*\)\s*:\s*$/.test(raw[1]),tip:"Рядок 2: перевірте for, змінну i, range(8) та двокрапку."},
-      {ok:/^[ \t]+a\s*\[\s*i\s*\]\s*=\s*a\s*\[\s*i\s*\]\s*\+\s*10\s*$/.test(raw[2]),tip:"Рядок 3: потрібен відступ і команда збільшення a[i] на 10. Напишіть a[i] = a[i] + 10."},
-      {ok:/^print\s*\(\s*a\s*\)\s*$/.test(raw[3]),tip:"Рядок 4: запишіть print(a) без відступу — після циклу."}
+    const raw=fields.map(f=>f.value.replace(/\r/g,""));
+    const expected=[
+      "a = [60, 120, 130, 10, 40, 150, 50, 55]",
+      "for i in range(8):",
+      "    a[i] = a[i] + 10",
+      "print(a)"
     ];
-    const wrong=details.filter(x=>!x.ok);
-    if(wrong.length===0){feedback.textContent="Молодець! Усі чотири рядки правильні, порядок команд збережено. Програма збільшить кожну ціну на 10 грн. Тепер спробуйте визначити результат.";return;}
-    feedback.textContent="Попрацюй ще! "+wrong.map(x=>x.tip).join("\n");
+    const wrong=raw.map((line,i)=>({number:i+1,reason:checkPythonLine(line,expected[i])})).filter(x=>x.reason);
+    feedback.textContent=wrong.length
+      ?"Попрацюй ще! "+wrong.map(x=>"Рядок "+x.number+": "+x.reason).join("\\n")
+      :"Молодець! Усі рядки відповідають запропонованому алгоритму. Відступи та запис команд перевірено. Зверніть увагу: Python тут не виконується.";
   });
   render();
 })();
@@ -161,7 +162,7 @@ for(const task of tasks){
  const output=document.getElementById("task-"+task.id+"-assembled");
  const result=document.getElementById("task-"+task.id+"-feedback");
  const render=()=>{
-  const lines=inputs.map(input=>input.value.replace(/\r/g,"").replace(/\n/g,""));
+  const lines=inputs.map(input=>input.value.replace(/\r/g,""));
   output.textContent=lines.some(line=>line.trim())?lines.map((line,i)=>line||"# Рядок "+(i+1)+" порожній").join("\n"):"# Почніть вводити код...";
  };
  inputs.forEach(input=>{input.addEventListener("input",()=>{render();result.textContent="Ваш код оновлено. Завершіть усі рядки й натисніть «Перевірити код».";});input.addEventListener("keydown",e=>{if(e.key==="Enter")e.preventDefault();});});
@@ -170,14 +171,11 @@ for(const task of tasks){
   document.querySelectorAll('[data-example="'+task.id+'"]').forEach(example=>example.hidden=hard);
  }));
  document.querySelector('[data-check-task="'+task.id+'"]').addEventListener("click",()=>{
-  const actual=inputs.map(i=>i.value.replace(/\r/g,"").replace(/\n/g,""));
-  const normalize=line=>line.trim().replace(/\s+/g," ");
-  const wrong=[];
-  task.lines.forEach((expected,index)=>{
-   const a=actual[index],e=expected;
-   if(!a.trim()||normalize(a)!==normalize(e)||(/^\s+/.test(e)!==/^\s+/.test(a)))wrong.push(index+1);
-  });
-  result.textContent=wrong.length?"Попрацюй ще! Перевір рядки: "+wrong.join(", ")+". Зверни увагу на запис команд, аргументи та відступи.":"Молодець! Усі рядки збігаються із запропонованим алгоритмом. Програму складено правильно.";
+  const actual=inputs.map(i=>i.value.replace(/\r/g,""));
+  const wrong=task.lines.map((expected,index)=>({number:index+1,reason:checkPythonLine(actual[index],expected)})).filter(x=>x.reason);
+  result.textContent=wrong.length
+    ?"Попрацюй ще! "+wrong.map(x=>"Рядок "+x.number+": "+x.reason).join("\\n")
+    :"Молодець! Усі рядки відповідають запропонованому алгоритму. Відступи та запис команд перевірено. Python тут не виконується.";
  });
  document.querySelector('[data-clear-task="'+task.id+'"]').addEventListener("click",()=>{inputs.forEach(input=>input.value="");render();result.textContent="Поля очищено. Можна починати знову.";inputs[0].focus();});
  render();
