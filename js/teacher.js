@@ -42,7 +42,7 @@ document.querySelectorAll(".class-selector").forEach(button => {
     const heading = document.createElement("h3");
     heading.textContent = grade + " клас";
     const description = document.createElement("p");
-    description.textContent = "Тут згодом з’являться тренажери, вікторини та інтерактивні аркуші для " + grade + " класу. Навчальних даних поки немає.";
+    description.textContent = "Перейдіть до каталогу навчальних матеріалів для " + grade + " класу. Навчальних даних поки немає.";
     gradePreview.append(heading, description);
   });
 });
@@ -62,7 +62,7 @@ onAuthStateChanged(auth, async user => {
       status.textContent = "Обліковий запис активний, але право доступу вчителя не призначено.";
       return;
     }
-    status.textContent = "Роль учителя підтверджено. Демонстраційний кабінет відкрито; учнівські дані не підключено.";
+    status.textContent = "Роль учителя підтверджено. Кабінет відкрито. Дані учнів у цьому розділі недоступні.";
     dashboard.hidden = false;
   } catch {
     status.textContent = "Не вдалося перевірити права доступу. Спробуйте пізніше.";
