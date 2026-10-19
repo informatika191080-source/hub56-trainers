@@ -33,3 +33,13 @@
 .matching-actions{display:flex;flex-wrap:wrap;gap:10px}
 .matching-reset{background:#e8f4ff;color:#185483;border:1px solid #9bc9ea;border-radius:11px;padding:12px 18px;min-height:44px;cursor:pointer;font:inherit;font-weight:750}
 @media(max-width:650px){.matching-row{grid-template-columns:minmax(0,1fr)}.matching-feedback{grid-column:1}}
+
+/* Universal ordering trainer */
+.ordering-list{display:grid;gap:12px;list-style:none;counter-reset:ordering;padding:0;margin:18px 0}
+.ordering-item{counter-increment:ordering;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;background:#f4f9ff;border:1px solid #d9e8f6;border-radius:13px;padding:14px}
+.ordering-step{color:#183b62;line-height:1.5;min-width:0;overflow-wrap:anywhere}
+.ordering-step::before{content:counter(ordering) ". ";font-weight:800}
+.ordering-controls{display:flex;gap:7px;flex-wrap:wrap}
+.ordering-controls button{padding:9px 12px}
+.ordering-controls button:disabled{opacity:.42;cursor:not-allowed}
+@media(max-width:620px){.ordering-item{grid-template-columns:minmax(0,1fr)}.ordering-controls{justify-content:flex-start}}
