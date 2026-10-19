@@ -10,6 +10,22 @@ const button = document.querySelector("#login-button");
 const logout = document.querySelector("#logout-button");
 const roleMessage = document.querySelector("#account-role-message");
 const teacherLink = document.querySelector("#teacher-cabinet-link");
+const studentLink = document.querySelector("#student-space-link");
+const roleOptions = [...document.querySelectorAll('input[name="login-role"]')];
+let chosenRole = document.querySelector('input[name="login-role"]:checked')?.value || "student";
+let verifiedTeacher = false;
+function refreshDestination(){
+ teacherLink.hidden = !(auth.currentUser && chosenRole === "teacher" && verifiedTeacher);
+ studentLink.hidden = !(auth.currentUser && chosenRole === "student");
+}
+roleOptions.forEach(option=>option.addEventListener("change",()=>{
+ chosenRole = document.querySelector('input[name="login-role"]:checked')?.value || "student";
+ refreshDestination();
+ if(auth.currentUser){
+  if(chosenRole === "student") notice("Вхід активний. Можна перейти до вибору класу.");
+  else notice(verifiedTeacher?"Роль учителя підтверджена. Перейдіть до кабінету.":"Для входу в кабінет потрібна роль учителя.");
+ }
+}));
 let authRevision = 0;
 
 function notice(text) { message.textContent = text; }
@@ -31,7 +47,8 @@ onAuthStateChanged(auth, async user => {
   const currentRevision = ++authRevision;
   form.hidden = Boolean(user);
   panel.hidden = !user;
-  teacherLink.hidden = true;
+  verifiedTeacher = false;
+  refreshDestination();
   accountEmail.textContent = user?.email ?? "";
   if (!user) {
     roleMessage.textContent = "";
@@ -43,13 +60,17 @@ onAuthStateChanged(auth, async user => {
   try {
     const token = await user.getIdTokenResult(true);
     if (currentRevision !== authRevision || auth.currentUser?.uid !== user.uid) return;
-    if (token.claims.role === "teacher") {
-      roleMessage.textContent = "Роль учителя підтверджена. Можна перейти до кабінету вчителя.";
-      teacherLink.hidden = false;
+    verifiedTeacher = token.claims.role === "teacher";
+    refreshDestination();
+    if(chosenRole === "student") {
+      roleMessage.textContent = "Оберіть свій клас на головній сторінці.";
+      notice("Вхід активний. Можна перейти до вибору класу.");
+    } else if (verifiedTeacher) {
+      roleMessage.textContent = "Роль учителя підтверджена.";
       notice("Вхід успішний. Доступ до кабінету вчителя дозволено.");
     } else {
-      roleMessage.textContent = "Роль учителя не підтверджена. Кабінет учителя недоступний для цього облікового запису.";
-      notice("Вхід успішний. Для кабінету вчителя потрібні відповідні права.");
+      roleMessage.textContent = "Цей обліковий запис не має ролі вчителя.";
+      notice("Для кабінету вчителя потрібні відповідні права.");
     }
   } catch {
     if (currentRevision !== authRevision || auth.currentUser?.uid !== user.uid) return;
@@ -58,7 +79,8 @@ onAuthStateChanged(auth, async user => {
   }
 }, () => {
   ++authRevision;
-  teacherLink.hidden = true;
+  verifiedTeacher = false;
+  refreshDestination();
   notice("Не вдалося перевірити стан входу. Перевірте підключення.");
 });
 
