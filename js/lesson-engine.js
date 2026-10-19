@@ -1,4 +1,5 @@
 import {renderQuiz} from "./quiz-engine.js";
+import {renderMatching} from "./trainers/matching.js";
 const app=document.getElementById("lesson-prototype");
 if(app){
   const {lesson}=await import("../data/lessons/demo-9-00.js");
@@ -13,6 +14,7 @@ if(app){
     const heading=document.createElement("h2");heading.textContent=section.heading;card.append(heading);
     if(section.type==="content"){for(const t of section.paragraphs){const p=document.createElement("p");p.textContent=t;card.append(p)}}
     else if(section.type==="quiz"){renderQuiz(section,card)}
+    else if(section.type==="matching"){renderMatching(section,card)}
     else if(section.type==="notice"){const p=document.createElement("p");p.className="lesson-template-note";p.textContent=section.message;card.append(p)}
     panels.append(card);
   }
