@@ -66,7 +66,7 @@ body{background:linear-gradient(180deg,#edf6ff 0%,#f7f9ff 55%,#fff 100%);color:#
 const questions=[{"ok":2,"exp":"Значення вводять по одному через input() у циклі або одним рядком з поділом через split()."},{"ok":0,"exp":"print(a) показує список, print(a[0]) — один елемент, print(*a) — елементи через пропуски."},{"ok":3,"exp":"len(a) повертає кількість елементів списку a."},{"ok":1,"exp":"a.append(x) додає один елемент x наприкінці списку a."},{"ok":2,"exp":"Функція print() виводить значення на екран, зокрема весь список."}];
 document.getElementById("lesson-quiz").addEventListener("change",event=>{
  if(!event.target.matches('input[type="radio"]'))return;
- document.getElementById("lesson-quiz-result").textContent="Відповіді змінено. Натисніть «Перевірити відповіді», щоб отримати новий результат.";
+ document.getElementById("lesson-quiz-result").textContent="Відповіді змінено. Натисніть «Перевірити тест», щоб отримати новий результат.";
  document.querySelectorAll('[id^="quiz-explain-"]').forEach(item=>item.textContent="");
 });
 document.getElementById("lesson-quiz").addEventListener("submit",event=>{
