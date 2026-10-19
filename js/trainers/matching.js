@@ -1,6 +1,7 @@
 // Reusable match-the-pairs activity for HUB 56. All checks are local.
 export function renderMatching(section, container) {
   const pairs=section.pairs;
+  const emit=(score,answered)=>container.dispatchEvent(new CustomEvent("hub56:activity",{bubbles:true,detail:{score,answered,total:pairs.length}}));
   if(!Array.isArray(pairs)||pairs.length<2||pairs.some(p=>!p.id||!p.left||!p.right)||new Set(pairs.map(p=>p.id)).size!==pairs.length){
     const error=document.createElement("p");error.textContent="Вправу налаштовано некоректно.";container.append(error);return;
   }
@@ -16,7 +17,7 @@ export function renderMatching(section, container) {
     const placeholder=document.createElement("option");placeholder.value="";placeholder.textContent="Оберіть відповідність";select.append(placeholder);
     choices.forEach(choice=>{const option=document.createElement("option");option.value=choice.id;option.textContent=choice.right;select.append(option)});
     const feedback=document.createElement("span");feedback.className="matching-feedback";feedback.setAttribute("aria-live","polite");
-    select.addEventListener("change",()=>{feedback.textContent="";result.textContent=""});
+    select.addEventListener("change",()=>{feedback.textContent="";result.textContent="";emit(null,null)});
     row.append(label,select,feedback);form.append(row);controls.push({pair,select,feedback});
   });
   const actions=document.createElement("div");actions.className="matching-actions";
@@ -33,10 +34,10 @@ export function renderMatching(section, container) {
       if(select.value===pair.id){correct++;feedback.textContent="Правильно."}
       else feedback.textContent="Спробуйте ще раз.";
     });
-    result.textContent="Результат: "+correct+" із "+pairs.length+". Відповідей надано: "+answered+" із "+pairs.length+".";
+    result.textContent="Результат: "+correct+" із "+pairs.length+". Відповідей надано: "+answered+" із "+pairs.length+".";emit(correct,answered);
   });
   reset.addEventListener("click",()=>{
     form.reset();controls.forEach(c=>c.feedback.textContent="");result.textContent="";
-    controls[0].select.focus();
+    controls[0].select.focus();emit(null,null);
   });
 }
