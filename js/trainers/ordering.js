@@ -1,6 +1,7 @@
 // Reusable ordered-steps activity. No network requests or student records.
 export function renderOrdering(section, container){
   const steps=section.steps;
+  const emit=(score,answered)=>container.dispatchEvent(new CustomEvent("hub56:activity",{bubbles:true,detail:{score,answered,total:1}}));
   if(!Array.isArray(steps)||steps.length<2||steps.some(x=>typeof x!=="string"||!x.trim())){
     const p=document.createElement("p");p.textContent="Вправу налаштовано некоректно.";container.append(p);return;
   }
@@ -27,7 +28,7 @@ export function renderOrdering(section, container){
         button.addEventListener("click",()=>{
           const next=index+delta;
           [order[index],order[next]]=[order[next],order[index]];
-          result.textContent="";
+          result.textContent="";emit(null,null);
           redraw(next,direction);
         });
         controls.append(button);
@@ -42,8 +43,8 @@ export function renderOrdering(section, container){
   }
   check.addEventListener("click",()=>{
     const correct=order.every((value,index)=>value===index);
-    result.textContent=correct?"Правильно! Послідовність установлено.":"Порядок поки неправильний. Спробуйте ще раз.";
+    result.textContent=correct?"Правильно! Послідовність установлено.":"Порядок поки неправильний. Спробуйте ще раз.";emit(correct?1:0,1);
   });
-  reset.addEventListener("click",()=>{order=[...initial];result.textContent="";redraw();list.querySelector("button:not(:disabled)")?.focus()});
+  reset.addEventListener("click",()=>{order=[...initial];result.textContent="";emit(null,null);redraw();list.querySelector("button:not(:disabled)")?.focus()});
   redraw();
 }
