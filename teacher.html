@@ -49,13 +49,13 @@
 <button type="button" class="teacher-tab" data-tab="results" id="tab-results" role="tab" aria-controls="panel-results" aria-selected="false">Результати</button>
 </nav>
 <section id="panel-overview" class="teacher-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0" aria-label="Огляд кабінету">
-<h2>Огляд платформи</h2><p class="teacher-lead">Огляд навчальних розділів платформи. Показники учнівської активності не збираються.</p>
+<h2>Огляд платформи</h2><p class="teacher-lead">Навчальні розділи та доступні матеріали HUB 56.</p>
 <div class="teacher-cards">
-<article class="teacher-card"><span class="teacher-badge">Навчальні рівні</span><div class="teacher-count">5</div><h3>5–9 класи</h3><p>Передбачені окремі добірки завдань за класами.</p></article>
+<article class="teacher-card"><span class="teacher-badge">Навчальні рівні</span><div class="teacher-count">5</div><h3>5–9 класи</h3><p>Навчальні розділи 5–9 класів.</p></article>
 <article class="teacher-card"><span class="teacher-badge">Навчальні матеріали</span><div class="teacher-count">1</div><h3>Доступні уроки</h3><p>Урок №18 для 9 класу.</p></article>
-<article class="teacher-card"><span class="teacher-badge">Доступ вимкнено</span><div class="teacher-count">—</div><h3>Результати учнів</h3><p>Завантаження та оцінювання ще не підключені.</p></article>
+<article class="teacher-card"><span class="teacher-badge">Статус</span><div class="teacher-count">—</div><h3>Результати учнів</h3><p>Перегляд результатів наразі недоступний.</p></article>
 </div>
-<div class="teacher-note"><strong>Безпека:</strong> сторінка не читає та не записує даних Firestore. Всі елементи панелі працюють тільки в браузері та не є обліком занять.</div>
+
 </section>
 <section id="panel-classes" class="teacher-panel" role="tabpanel" aria-labelledby="tab-classes" tabindex="0" aria-label="Класи" hidden>
 <h2>Класи</h2><p class="teacher-lead">Оберіть клас для перегляду його навчального простору.</p>
@@ -66,22 +66,22 @@
 <button class="class-selector" type="button" data-grade="8" aria-pressed="false"><strong>8 клас</strong><span>Практичні проєкти</span></button>
 <button class="class-selector" type="button" data-grade="9" aria-pressed="false"><strong>9 клас</strong><span>Програмування Python</span></button>
 </div>
-<p class="teacher-lead"><a href="pilot-lesson18.html" class="primary">Відкрити урок №18 →</a></p>
+<p class="teacher-lead"><a href="class9.html" class="primary">Переглянути уроки 9 класу →</a></p>
 <div class="teacher-preview" id="grade-preview" aria-live="polite"><h3>5 клас</h3><p>Навчальні матеріали обраного класу доступні через його каталог.</p></div>
 </section>
 <section id="panel-activities" class="teacher-panel" role="tabpanel" aria-labelledby="tab-activities" tabindex="0" aria-label="Завдання" hidden>
-<h2>Завдання</h2><p class="teacher-lead">Напрями навчальних завдань.</p>
+<h2>Завдання</h2><p class="teacher-lead">Типи навчальних завдань.</p>
 <div class="teacher-cards">
-<article class="teacher-card"><span class="teacher-badge">У розробці</span><h3>Вікторини</h3><p>Запитання з автоматичною перевіркою відповідей.</p></article>
+<article class="teacher-card"><span class="teacher-badge">Планується</span><h3>Вікторини</h3><p>Запитання з автоматичною перевіркою відповідей.</p></article>
 <article class="teacher-card"><span class="teacher-badge">У розробці</span><h3>Інтерактивні аркуші</h3><p>Покрокові вправи та фіксація виконання.</p></article>
 <article class="teacher-card"><span class="teacher-badge">У розробці</span><h3>Python-тренажери</h3><p>Введення та виконання навчального коду в контрольованому середовищі.</p></article>
 </div>
-<div class="teacher-note">Створення й публікація завдань у кабінеті наразі недоступні.</div>
+
 </section>
 <section id="panel-results" class="teacher-panel" role="tabpanel" aria-labelledby="tab-results" tabindex="0" aria-label="Результати" hidden>
 <h2>Результати</h2><p class="teacher-lead">Відомості про виконані роботи та оцінки.</p>
-<div class="teacher-preview"><h3>Дані ще не підключено</h3><p>Цей розділ не містить списків учнів, оцінок або журналу активності.</p></div>
-<h3>Що потрібно перед запуском</h3><ol class="teacher-steps"><li><strong>Правила Firestore</strong> — перевірити серверні права вчителя та учня.</li><li><strong>Модель даних</strong> — визначити структуру класів, занять та спроб.</li><li><strong>Надійне оцінювання</strong> — не довіряти балам, які надсилає браузер.</li><li><strong>Тестування</strong> — перевірити доступ із різних облікових записів.</li></ol>
+<div class="teacher-preview"><h3>Результатів поки немає</h3><p>Перегляд результатів і оцінок наразі недоступний.</p></div>
+
 </section>
 </div>
 <p style="margin-top:30px"><a href="index.html">← На головну</a></p>
