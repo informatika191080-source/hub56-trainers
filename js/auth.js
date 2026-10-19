@@ -35,7 +35,7 @@ onAuthStateChanged(auth, async user => {
   accountEmail.textContent = user?.email ?? "";
   if (!user) {
     roleMessage.textContent = "";
-    notice("Увійдіть за тестовими обліковими даними.");
+    notice("Увійдіть за наданими обліковими даними.");
     return;
   }
   roleMessage.textContent = "Перевіряємо роль облікового запису…";
