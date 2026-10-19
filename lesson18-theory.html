@@ -122,6 +122,15 @@ values.forEach((value,index)=>{
  button.addEventListener("click",()=>{document.getElementById("index-output").textContent="a["+index+"] = "+value+". Індекс — "+index+", значення елемента — "+value+".";});
  elements.append(button);
 });
+document.getElementById("index-answer").addEventListener("input",()=>{
+ document.getElementById("index-feedback").textContent="Відповідь змінено. Натисніть «Перевірити», щоб отримати новий результат.";
+});
+document.getElementById("append-input").addEventListener("input",()=>{
+ document.getElementById("append-feedback").textContent="Нове число введено, але ще не додано до списку. Натисніть «Додати», щоб виконати дію.";
+});
+document.getElementById("print-choice").addEventListener("change",()=>{
+ document.getElementById("print-feedback").textContent="Варіант змінено. Натисніть «Перевірити», щоб отримати новий результат.";
+});
 const idxBtn=document.getElementById("check-index");
 idxBtn.addEventListener("click",()=>{const raw=document.getElementById("index-answer").value.trim();const result=document.getElementById("index-feedback");if(!raw){result.textContent="Спочатку введіть число.";return;}if(!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(raw)){result.textContent="Уведіть число з десятковою крапкою, наприклад -4 або -4.0.";return;}result.textContent=Number.isFinite(Number(raw))&&Number(raw)===-4?"Правильно: a[4] — п'ятий елемент, значення -4.":"Перевірте ще раз: індекси починаються з нуля, тому a[4] — п'ятий елемент.";});
 let appended=[10,20,30];
