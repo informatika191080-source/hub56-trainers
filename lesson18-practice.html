@@ -101,7 +101,23 @@ function pythonTokens(line) {
  }
  return tokens;
 }
+function hasNonbreakingSpaceOutsideString(line) {
+ let quote=null;
+ for(let i=0;i<line.length;i++){
+  const c=line[i];
+  if(quote){
+   if(c==="\\"){i++;continue;}
+   if(c===quote)quote=null;
+  }else if(c==='"'||c==="'"){
+   quote=c;
+  }else if(c==="\u00a0"){
+   return true;
+  }
+ }
+ return false;
+}
 function checkPythonLine(actual,expected) {
+ if(hasNonbreakingSpaceOutsideString(actual))return "Знайдено нерозривний пробіл. У Python між командами й перед рядками використовуйте звичайний пробіл клавішею Пробіл, а не нерозривний пробіл (U+00A0).";
  if(/[\r\n]/.test(actual))return "У полі є перенесення рядка. Кожне поле призначене для одного рядка Python.";
  const leading=line=>line.match(/^[ \t]*/)[0];
  const a=leading(actual),e=leading(expected);
