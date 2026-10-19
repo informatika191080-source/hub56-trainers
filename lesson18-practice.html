@@ -127,6 +127,9 @@ function checkPythonLine(actual,expected) {
  return "Перевірте назви змінних, функцій, аргументи, лапки й розділові знаки. Пробіли між командами допускаються.";
  return null;
 }
+document.getElementById("price-answer").addEventListener("input",()=>{
+ document.getElementById("price-result").textContent="Відповідь змінено. Натисніть «Перевірити відповідь», щоб отримати новий результат.";
+});
 document.getElementById("show-hint").addEventListener("click",()=>{document.getElementById("price-result").textContent="Підказка: до кожної вихідної ціни додайте 10. Усього повинно бути рівно вісім чисел.";});
 document.getElementById("check-prices").addEventListener("click",()=>{
  const text=document.getElementById("price-answer").value.trim();
