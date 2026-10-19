@@ -1,6 +1,7 @@
 // Self-check quiz. Does not save or transmit student answers.
 export function renderQuiz(section, container) {
   const form=document.createElement("form");
+  const emit=(score,answered)=>container.dispatchEvent(new CustomEvent("hub56:activity",{bubbles:true,detail:{score,answered,total:section.questions.length}}));
   const details=[];
   section.questions.forEach((question,i)=>{
     const fieldset=document.createElement("fieldset");fieldset.className="lesson-template-fieldset";
@@ -12,7 +13,7 @@ export function renderQuiz(section, container) {
       label.append(radio,document.createTextNode(" "+option));fieldset.append(label);
     });
     const feedback=document.createElement("p");feedback.className="lesson-template-feedback";feedback.setAttribute("aria-live","polite");fieldset.append(feedback);details.push(feedback);
-    fieldset.addEventListener("change",()=>{feedback.textContent="";result.textContent="";});
+    fieldset.addEventListener("change",()=>{feedback.textContent="";result.textContent="";emit(null,null);});
     form.append(fieldset);
   });
   const check=document.createElement("button");check.type="submit";check.className="lesson-template-button";check.textContent="Перевірити тест";form.append(check);
@@ -26,7 +27,7 @@ export function renderQuiz(section, container) {
       if(Number(selected.value)===q.correct){score++;details[i].textContent="Правильно. "+q.explanation}
       else details[i].textContent="Спробуйте ще раз. "+q.explanation;
     });
-    result.textContent="Результат: "+score+" із "+section.questions.length+". Відповідей надано: "+answered+".";
+    result.textContent="Результат: "+score+" із "+section.questions.length+". Відповідей надано: "+answered+".";emit(score,answered);
   });
   container.append(form);
 }
