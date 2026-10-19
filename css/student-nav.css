@@ -1,0 +1,23 @@
+/* HUB56 shared scoped student navigation */
+.student-header{background:rgba(255,255,255,.96);border-bottom:1px solid #dbe6f3;box-shadow:0 5px 22px #719cce16;position:sticky;top:0;z-index:50;backdrop-filter:blur(14px)}
+.student-bar{display:flex;align-items:center;gap:20px;min-height:75px}
+.student-brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#19355c;flex-shrink:0}
+.student-brand .brand-mark{display:grid;place-items:center;width:46px;height:46px}
+.student-brand-title{font-size:20px;font-weight:850;line-height:1.05}
+.student-brand-sub{display:block;font-size:12px;color:#66809e;font-weight:600;margin-top:4px}
+.student-desktop-nav{margin-left:auto;display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:5px}
+.student-desktop-nav a,.student-mobile-menu a{color:#315779;text-decoration:none;font-weight:700;font-size:13px;border-radius:10px;padding:10px 12px;white-space:nowrap}
+.student-desktop-nav a:hover,.student-mobile-menu a:hover{background:#e8f3ff;color:#165c9c}
+.student-desktop-nav a[aria-current="page"],.student-mobile-menu a[aria-current="page"]{background:#d9edff;color:#135c9b}
+.student-context{font-size:12px;color:#526b8d;border-radius:999px;padding:7px 11px;background:#eef6fe;border:1px solid #daebfb;white-space:nowrap}
+.student-mobile{display:none;margin-left:auto}
+.student-mobile summary{list-style:none;cursor:pointer;background:#eaf5ff;color:#164e82;border:1px solid #bedcf5;padding:10px 14px;border-radius:11px;font-weight:800}
+.student-mobile summary::-webkit-details-marker{display:none}
+.student-mobile-menu{position:absolute;left:12px;right:12px;top:calc(100% + 5px);background:#fff;border:1px solid #d9e8f5;box-shadow:0 16px 35px #547ca630;border-radius:16px;padding:12px;display:grid;gap:3px;max-height:75vh;overflow-y:auto}
+.student-mobile-menu a{display:block;padding:12px}
+.student-mobile-menu .student-context{margin:5px}
+.student-crumb{font-size:13px;color:#526b8d;margin:13px auto 0;max-width:1140px;padding:0 20px}
+.student-crumb a{color:#145d9c;text-decoration:none;font-weight:700}
+.student-crumb a:hover{text-decoration:underline}
+@media(max-width:1100px){.student-desktop-nav{display:none}.student-mobile{display:block}.student-bar{min-height:68px}}
+@media(max-width:520px){.student-brand-title{font-size:18px}.student-brand-sub{font-size:11px}.student-bar{gap:8px}.student-context{font-size:11px}}
