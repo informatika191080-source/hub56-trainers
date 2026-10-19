@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Списки в Python — інтерактивний аркуш HUB 56</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/student-nav.css"><link rel="stylesheet" href="css/worksheet-v2.css">
+<script src="js/student-nav.js" defer></script><script src="js/worksheet-v2.js" defer></script></head>
+<body data-grade="9"><a class="skip" href="#main">До основного вмісту</a><div id="student-navigation"><a href="class9.html">← 9 клас</a></div>
+<main class="sheet" id="main">
+ <div class="sheet-top"><a href="class9.html">← Каталог уроків</a><span>HUB 56 <span aria-hidden="true">/</span> ІНФОРМАТИКА <span aria-hidden="true">/</span> 9 КЛАС</span></div>
+ <header class="sheet-cover">
+  <div class="cover-copy"><span class="sheet-kicker">ІНТЕРАКТИВНИЙ РОБОЧИЙ АРКУШ · ДЕМОНСТРАЦІЯ</span><h1>Списки в <em>Python</em></h1>
+  <p>Досліджуй приклади, відновлюй команди й перевіряй свої рішення. Кожне завдання — наступний крок у розумінні списків.</p>
+  <div class="cover-facts"><span>4 змістові етапи</span><span>8 перевірюваних відповідей</span><span>Без оцінювання</span></div></div>
+  <div class="cover-art" aria-hidden="true"><div class="terminal-head"><i></i><i></i><i></i><span>lists.py</span></div><pre><span class="tk-purple">numbers</span> = [<span class="tk-yellow">12</span>, <span class="tk-yellow">24</span>, <span class="tk-yellow">36</span>, <span class="tk-yellow">48</span>]
+<span class="tk-blue">print</span>(numbers[<span class="tk-yellow">2</span>])
+<span class="tk-comment"># результат: 36</span></pre><div class="terminal-chips"><b>12</b><b>24</b><b class="chosen">36</b><b>48</b></div></div>
+ </header>
+ <div class="sheet-layout">
+ <aside class="sheet-aside"><div class="aside-inner"><span class="aside-caption">ТВІЙ МАРШРУТ</span><nav class="sheet-steps" aria-label="Етапи робочого аркуша">
+  <a href="#discover" class="is-current"><span>01</span><strong>Досліди</strong></a><a href="#connect"><span>02</span><strong>Зрозумій</strong></a><a href="#sequence"><span>03</span><strong>Застосуй</strong></a><a href="#restore"><span>04</span><strong>Закріпи</strong></a></nav>
+ <div class="aside-progress"><div class="aside-progress-head"><span>Перевірено етапів</span><strong id="progress-label">0 / 4</strong></div><div class="progress-track" role="progressbar" aria-label="Пройдені етапи" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="sheet-progress-track"><span id="progress-fill"></span></div><p>Перевіряй кожен етап — прогрес оновиться автоматично.</p></div></div></aside>
+ <div class="sheet-content">
+  <section class="sheet-section" id="discover"><div class="section-heading"><span class="section-number">01</span><div><p>ДОСЛІДЖУЄМО</p><h2>Як влаштований список?</h2></div></div>
+   <p class="section-lead">Список зберігає кілька значень під одним ім'ям. Подивись, як елементи розташовані всередині списку <code>numbers</code>.</p>
+   <div class="learning-visual"><div class="visual-top"><span class="visual-mark">PYTHON · ПРИКЛАД</span><code>numbers = [12, 24, 36, 48]</code></div><div class="list-cells" aria-label="Елементи списку та їхні індекси"><div><b>12</b><small>індекс 0</small></div><div><b>24</b><small>індекс 1</small></div><div class="accent"><b>36</b><small>індекс 2</small></div><div><b>48</b><small>індекс 3</small></div></div><p class="visual-caption">У Python нумерація елементів починається з <strong>0</strong>, а не з 1.</p></div>
+   <form class="sheet-task" data-task="discover"><fieldset><legend>Який індекс має елемент зі значенням 36?</legend><div class="answers-row"><label><input type="radio" name="index" value="1"> <span>1</span></label><label><input type="radio" name="index" value="2"> <span>2</span></label><label><input type="radio" name="index" value="3"> <span>3</span></label></div></fieldset><div class="task-footer"><button type="submit">Перевірити відповідь <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form>
+  </section>
+  <section class="sheet-section" id="connect"><div class="section-heading"><span class="section-number">02</span><div><p>ВСТАНОВЛЮЄМО ЗВ'ЯЗКИ</p><h2>Знайди правильні пари</h2></div></div><p class="section-lead">Кожна команда має своє призначення. Добери пояснення для кожного запису.</p>
+   <form class="sheet-task" data-task="connect"><div class="match-list">
+    <label><span class="code-chip">len(numbers)</span><select aria-label="Призначення len(numbers)"><option value="">Вибери пояснення</option><option value="append">Додати число 5 у список</option><option value="len">Знайти кількість елементів</option><option value="print">Вивести список на екран</option></select></label>
+    <label><span class="code-chip">numbers.append(5)</span><select aria-label="Призначення numbers.append(5)"><option value="">Вибери пояснення</option><option value="print">Вивести список на екран</option><option value="append">Додати число 5 у список</option><option value="len">Знайти кількість елементів</option></select></label>
+    <label><span class="code-chip">print(numbers)</span><select aria-label="Призначення print(numbers)"><option value="">Вибери пояснення</option><option value="len">Знайти кількість елементів</option><option value="print">Вивести список на екран</option><option value="append">Додати число 5 у список</option></select></label>
+   </div><div class="task-footer"><button type="submit">Перевірити пари <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form>
+  </section>
+  <section class="sheet-section" id="sequence"><div class="section-heading"><span class="section-number">03</span><div><p>СКЛАДАЄМО АЛГОРИТМ</p><h2>Побудуй послідовність</h2></div></div><p class="section-lead">Потрібно отримати список із двох цілих чисел. Розмісти кроки створення програми в логічному порядку.</p>
+   <div class="sequence-note">Підказка: спочатку створюємо порожній список, потім повторюємо введення й додаємо значення до списку.</div>
+   <form class="sheet-task" data-task="sequence"><ol class="sequence-list" id="sequence-list"></ol><div class="task-footer"><button type="submit">Перевірити порядок <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form>
+  </section>
+  <section class="sheet-section" id="restore"><div class="section-heading"><span class="section-number">04</span><div><p>ЗАКРІПЛЮЄМО ЗНАННЯ</p><h2>Віднови пропущені команди</h2></div></div><p class="section-lead">Пригадай назви функцій і методів. Короткий зразок під кожним запитанням допоможе їх відновити.</p>
+   <form class="sheet-task" data-task="restore"><div class="blank-grid">
+   <label>Кількість елементів списку <small>Підказка: <code>l__()</code></small><input type="text" autocomplete="off" spellcheck="false" placeholder="Уведи функцію"></label>
+   <label>Додавання елемента в кінець списку <small>Підказка: <code>a_____()</code></small><input type="text" autocomplete="off" spellcheck="false" placeholder="Уведи метод"></label>
+   <label>Виведення значень на екран <small>Підказка: <code>p____()</code></small><input type="text" autocomplete="off" spellcheck="false" placeholder="Уведи функцію"></label>
+   </div><div class="task-footer"><button type="submit">Перевірити команди <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form>
+  </section>
+ <section class="sheet-results" aria-labelledby="results-title"><div class="results-icon" aria-hidden="true">✓</div><div><p class="aside-caption">ТВІЙ РЕЗУЛЬТАТ</p><h2 id="results-title">Підсумок роботи</h2><p id="sheet-result" role="status">Виконай і перевір усі чотири етапи — тут з'явиться загальний результат.</p></div><button id="restart-all" type="button" class="restart-button">Почати заново</button></section>
+ <p class="sheet-disclaimer">Демонстраційний навчальний аркуш HUB 56. Відповіді перевіряються лише у браузері, не зберігаються та не використовуються для виставлення оцінок. Автор навчальних матеріалів: Левін М. П. Матеріал спеціально розроблений для гімназії №56.</p>
+ </div></div>
+</main><footer class="footer"><div class="shell">HUB 56 · Інформатика · 9 клас</div></footer></body></html>
