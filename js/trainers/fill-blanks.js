@@ -1,6 +1,7 @@
 // HUB 56 reusable fill-in-the-blanks trainer. Local feedback only.
 export function renderFillBlanks(section,container){
  const items=section.items;
+ const emit=(score,answered)=>container.dispatchEvent(new CustomEvent("hub56:activity",{bubbles:true,detail:{score,answered,total:items.length}}));
  if(!Array.isArray(items)||items.length===0||items.some(item=>typeof item.prompt!=="string"||!item.prompt.trim()||!Array.isArray(item.answers)||!item.answers.length||item.answers.some(a=>typeof a!=="string"||!a.trim()))){
   const error=document.createElement("p");error.textContent="Вправу налаштовано некоректно.";container.append(error);return;
  }
@@ -14,7 +15,7 @@ export function renderFillBlanks(section,container){
   const clue=document.createElement("p");clue.className="fill-blanks-clue";clue.id=id+"-clue";clue.textContent=item.clue||"Запишіть назву команди та перевірте її синтаксис.";
   input.setAttribute("aria-describedby",clue.id);
   const feedback=document.createElement("p");feedback.className="fill-blanks-feedback";feedback.setAttribute("aria-live","polite");
-  input.addEventListener("input",()=>{feedback.textContent="";result.textContent=""});
+  input.addEventListener("input",()=>{feedback.textContent="";result.textContent="";emit(null,null)});
   box.append(label,clue,input,feedback);form.append(box);controls.push({item,input,feedback});
  });
  const actions=document.createElement("div");actions.className="matching-actions";
@@ -31,7 +32,7 @@ export function renderFillBlanks(section,container){
    if(item.answers.some(expected=>normalize(answer)===normalize(expected))){correct++;feedback.textContent="Правильно. "+(item.explanation||"")}
    else feedback.textContent="Спробуйте ще раз. "+(item.hint||"Перевірте правильність команди.");
   }
-  result.textContent="Результат: "+correct+" із "+items.length+". Відповідей надано: "+answered+" із "+items.length+".";
+  result.textContent="Результат: "+correct+" із "+items.length+". Відповідей надано: "+answered+" із "+items.length+".";emit(correct,answered);
  });
- reset.addEventListener("click",()=>{form.reset();for(const item of controls)item.feedback.textContent="";result.textContent="";controls[0].input.focus()});
+ reset.addEventListener("click",()=>{form.reset();for(const item of controls)item.feedback.textContent="";result.textContent="";controls[0].input.focus();emit(null,null)});
 }
