@@ -11,9 +11,11 @@ export function renderFillBlanks(section,container){
   const box=document.createElement("div");box.className="fill-blanks-item";
   const label=document.createElement("label");const id="blank-"+section.id+"-"+index;label.htmlFor=id;label.textContent=(index+1)+". "+item.prompt;
   const input=document.createElement("input");input.id=id;input.type="text";input.autocomplete="off";input.spellcheck=false;input.className="fill-blanks-input";
+  const clue=document.createElement("p");clue.className="fill-blanks-clue";clue.id=id+"-clue";clue.textContent=item.clue||"Запишіть назву команди та перевірте її синтаксис.";
+  input.setAttribute("aria-describedby",clue.id);
   const feedback=document.createElement("p");feedback.className="fill-blanks-feedback";feedback.setAttribute("aria-live","polite");
   input.addEventListener("input",()=>{feedback.textContent="";result.textContent=""});
-  box.append(label,input,feedback);form.append(box);controls.push({item,input,feedback});
+  box.append(label,clue,input,feedback);form.append(box);controls.push({item,input,feedback});
  });
  const actions=document.createElement("div");actions.className="matching-actions";
  const check=document.createElement("button");check.type="submit";check.className="lesson-template-button";check.textContent="Перевірити пропуски";
