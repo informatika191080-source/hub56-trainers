@@ -184,7 +184,7 @@ document.getElementById("loop-reset").addEventListener("click",()=>{step=0;price
     ];
     const wrong=raw.map((line,i)=>({number:i+1,reason:checkPythonLine(line,expected[i])})).filter(x=>x.reason);
     feedback.textContent=wrong.length
-      ?"Попрацюй ще! "+wrong.map(x=>"Рядок "+x.number+": "+x.reason).join("\\n")
+      ?"Попрацюй ще! "+wrong.map(x=>"Рядок "+x.number+": "+x.reason).join("\n")
       :"Молодець! Усі рядки відповідають запропонованому алгоритму. Відступи та запис команд перевірено. Зверніть увагу: Python тут не виконується.";
   });
   render();
@@ -223,7 +223,7 @@ for(const task of tasks){
   const actual=inputs.map(i=>i.value.replace(/\r/g,""));
   const wrong=task.lines.map((expected,index)=>({number:index+1,reason:checkPythonLine(actual[index],expected)})).filter(x=>x.reason);
   result.textContent=wrong.length
-    ?"Попрацюй ще! "+wrong.map(x=>"Рядок "+x.number+": "+x.reason).join("\\n")
+    ?"Попрацюй ще! "+wrong.map(x=>"Рядок "+x.number+": "+x.reason).join("\n")
     :"Молодець! Усі рядки відповідають запропонованому алгоритму. Відступи та запис команд перевірено. Python тут не виконується.";
  });
  document.querySelector('[data-clear-task="'+task.id+'"]').addEventListener("click",()=>{inputs.forEach(input=>input.value="");render();result.textContent="Поля очищено. Можна починати знову.";inputs[0].focus();});
