@@ -14,14 +14,12 @@ for (const grade of classes) {
   description.textContent = "Навчальні матеріали та уроки інформатики";
   const status = document.createElement("div");
   status.className = "coming";
-  status.textContent = grade === 9 ? "Каталог уроків доступний" : "Наповнюємо незабаром";
+  status.textContent = grade === 9 ? "Є доступні уроки" : "Матеріали готуються";
   card.append(number, title, description, status);
-  if (grade === 9) {
-    const link = document.createElement("a");
-    link.href = "class9.html";
-    link.className = "primary";
-    link.textContent = "Відкрити 9 клас →";
-    card.append(link);
-  }
+  const link = document.createElement("a");
+  link.href = "class" + grade + ".html";
+  link.className = "primary";
+  link.textContent = "Відкрити " + grade + " клас →";
+  card.append(link);
   grid.append(card);
 }
