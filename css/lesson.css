@@ -1,0 +1,24 @@
+/* HUB 56: isolated reusable lesson prototype styles */
+.lesson-template{max-width:1000px;padding:24px 0 65px}
+.lesson-template-hero{background:linear-gradient(120deg,#e4f4ff,#f0eaff 70%,#e8faf0);border:1px solid #d6e7f7;border-radius:23px;padding:clamp(23px,4vw,42px);margin:12px 0 22px}
+.lesson-template-hero h1{color:#17365d;font-size:clamp(26px,4vw,40px);line-height:1.2;margin:12px 0}
+.lesson-template-hero p{color:#4f6985}
+.lesson-template-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.lesson-template-link{display:block;text-decoration:none;background:#fff;border:1px solid #d6e6f7;border-radius:16px;padding:20px;color:#1e4775;box-shadow:0 7px 22px #afc8dd27}
+.lesson-template-link strong{display:block;font-size:19px;margin-bottom:6px}
+.lesson-template-link span{font-size:14px;line-height:1.5;color:#59708b}
+.lesson-template-link:hover{background:#edf7ff;border-color:#83c0ea}
+.lesson-template-card{background:#fff;border:1px solid #d8e6f6;border-radius:16px;padding:clamp(18px,3vw,26px);margin:18px 0}
+.lesson-template-card h2{color:#1d416e;margin-top:0}
+.lesson-template-card p,.lesson-template-card li{line-height:1.7;color:#344f70}
+.lesson-template-fieldset{border:1px solid #d9e8f6;border-radius:13px;background:#f7fbff;padding:16px;margin:16px 0;min-width:0}
+.lesson-template-fieldset legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.lesson-template-question{font-weight:800;line-height:1.5;color:#173b65;margin-bottom:12px}
+.lesson-template-option{display:block;padding:10px 12px;background:white;border:1px solid #dce9f5;border-radius:9px;margin:7px 0;cursor:pointer}
+.lesson-template-option input{margin-right:8px}
+.lesson-template-feedback{white-space:pre-line;color:#234a6e;margin:8px 0}
+.lesson-template-button{background:#156bb0;color:white;border:none;border-radius:11px;padding:12px 18px;min-height:44px;cursor:pointer;font:inherit;font-weight:750}
+.lesson-template-button:hover{background:#11588f}
+.lesson-template-note{background:#fff8e6;border:1px solid #eedcab;border-radius:12px;padding:14px;color:#665427}
+.lesson-template-nav{margin-bottom:15px}.lesson-template-nav a{color:#145e9f;text-decoration:none;font-weight:750}
+@media(max-width:620px){.lesson-template-grid{grid-template-columns:1fr}.lesson-template{padding-top:14px}}
