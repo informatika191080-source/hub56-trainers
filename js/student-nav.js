@@ -8,13 +8,13 @@
  if(![5,6,7,8,9].includes(grade))return;
  const current=location.pathname.split("/").pop()||"index.html";
  const classPath="class"+grade+".html";
- const sections=lesson===18&&grade===9?[
-  ["Урок №18","pilot-lesson18.html"],
-  ["Теорія","lesson18-theory.html"],
-  ["Питання","lesson18-questions.html"],
-  ["Практика","lesson18-practice.html"],
-  ["Інтерактив","lesson18-interactive.html"],
-  ["Домашнє","lesson18-homework.html"]
+ const sections=lesson>0?[
+  ["Урок №"+lesson,"pilot-lesson"+lesson+".html"],
+  ["Теорія","lesson"+lesson+"-theory.html"],
+  ["Питання","lesson"+lesson+"-questions.html"],
+  ["Практика","lesson"+lesson+"-practice.html"],
+  ["Інтерактив","lesson"+lesson+"-interactive.html"],
+  ["Домашнє","lesson"+lesson+"-homework.html"]
  ]:[];
  const items=[["Уроки "+grade+" класу",classPath],...sections];
  const header=document.createElement("header");header.className="student-header";
