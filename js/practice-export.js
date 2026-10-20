@@ -16,7 +16,7 @@ ready(()=>{
  card.innerHTML=`
    <p class="eyebrow">ЗАВЕРШЕННЯ РОБОТИ</p>
    <h2>Експорт виконаної роботи в PDF</h2>
-   <p>Заповніть усі поля практичної роботи. Перед експортом укажіть своє ім’я та клас.</p>
+   <p>Перед експортом укажіть своє ім’я та клас. PDF можна сформувати навіть тоді, коли частина відповідей залишилася незаповненою.</p>
    <div class="practice-export-meta">
      <label>Прізвище та ім’я
        <input type="text" id="practice-export-name" autocomplete="name" placeholder="Наприклад: Іваненко Марія">
@@ -29,7 +29,7 @@ ready(()=>{
    <div class="lesson-actions">
      <button type="button" id="practice-export-pdf">Експортувати виконану роботу в PDF</button>
    </div>
-   <p class="lesson-tiny">У системному вікні друку оберіть «Зберегти як PDF». До PDF потраплять умови завдань і введені вами відповіді.</p>`;
+   <p class="lesson-tiny">У системному вікні друку оберіть «Зберегти як PDF». До PDF потраплять умови завдань, введені відповіді та позначки «Не заповнено» для порожніх полів.</p>`;
  layout.insertAdjacentElement("afterend",card);
 
  const style=document.createElement("style");
@@ -84,7 +84,7 @@ ready(()=>{
      }else val=el.value||"";
      const box=document.createElement(el.closest("td")?"div":"p");
      box.className="pdf-answer";
-     box.textContent=val||"—";
+     box.textContent=val||"Не заповнено";
      el.replaceWith(box);
    });
    clone.querySelectorAll("label").forEach(l=>{
@@ -102,11 +102,10 @@ ready(()=>{
      (!name.value.trim()?name:cls).focus();
      return;
    }
-   if(missing){
-     status.textContent="Не всі поля заповнено. Залишилося: "+missing+". Заповніть роботу повністю перед експортом.";
-     status.className="practice-export-status is-warning";
-     return;
-   }
+   status.textContent=missing
+     ?"PDF буде сформовано. Незаповнених полів: "+missing+". У документі вони будуть позначені як «Не заповнено»."
+     :"Усі поля заповнено. PDF готовий до формування.";
+   status.className="practice-export-status "+(missing?"is-warning":"is-complete");
    const w=window.open("","_blank");
    if(!w){
      status.textContent="Браузер заблокував вікно експорту. Дозвольте спливаючі вікна для HUB 56 і повторіть.";
