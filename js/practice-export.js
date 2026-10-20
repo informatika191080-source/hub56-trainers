@@ -7,6 +7,17 @@ ready(()=>{
  const fields=[...content.querySelectorAll("[data-save-key]")];
  if(!fields.length)return;
 
+ const clearStudentAnswers=()=>{
+   fields.forEach(f=>{
+     if(f.matches('input[type="checkbox"],input[type="radio"]')) f.checked=false;
+     else if(f.matches("select")) f.selectedIndex=0;
+     else f.value="";
+     f.setAttribute("autocomplete","off");
+   });
+ };
+ clearStudentAnswers();
+ window.addEventListener("pageshow",clearStudentAnswers);
+
  const lesson=(document.body.dataset.lesson||"").trim();
  const grade=(document.body.dataset.grade||"").trim();
  const title=(document.querySelector(".lesson-hero h1")?.textContent||"Практична робота").trim();
@@ -16,7 +27,7 @@ ready(()=>{
  card.innerHTML=`
    <p class="eyebrow">ЗАВЕРШЕННЯ РОБОТИ</p>
    <h2>Експорт виконаної роботи в PDF</h2>
-   <p>Перед експортом укажіть своє ім’я та клас. PDF можна сформувати навіть тоді, коли частина відповідей залишилася незаповненою.</p>
+   <p>Перед експортом укажіть своє ім’я та клас.</p>
    <div class="practice-export-meta">
      <label>Прізвище та ім’я
        <input type="text" id="practice-export-name" autocomplete="name" placeholder="Наприклад: Іваненко Марія">
@@ -29,7 +40,7 @@ ready(()=>{
    <div class="lesson-actions">
      <button type="button" id="practice-export-pdf">Експортувати виконану роботу в PDF</button>
    </div>
-   <p class="lesson-tiny">У системному вікні друку оберіть «Зберегти як PDF». До PDF потраплять умови завдань, введені відповіді та позначки «Не заповнено» для порожніх полів.</p>`;
+   <p class="lesson-tiny">У системному вікні друку оберіть «Зберегти як PDF».</p>`;
  layout.insertAdjacentElement("afterend",card);
 
  const style=document.createElement("style");
@@ -102,10 +113,8 @@ ready(()=>{
      (!name.value.trim()?name:cls).focus();
      return;
    }
-   status.textContent=missing
-     ?"PDF буде сформовано. Незаповнених полів: "+missing+". У документі вони будуть позначені як «Не заповнено»."
-     :"Усі поля заповнено. PDF готовий до формування.";
-   status.className="practice-export-status "+(missing?"is-warning":"is-complete");
+   status.textContent="Підготовка PDF…";
+   status.className="practice-export-status";
    const w=window.open("","_blank");
    if(!w){
      status.textContent="Браузер заблокував вікно експорту. Дозвольте спливаючі вікна для HUB 56 і повторіть.";
