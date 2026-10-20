@@ -101,7 +101,7 @@ document.addEventListener("click",event=>{
     if(box)box.textContent="Спочатку введіть код програми, а потім запустіть його у ЄPython.";
     return;
   }
-  const url="https://yepython.pp.ua/?code="+encodeURIComponent(code);
+  const encoded=btoa(unescape(encodeURIComponent(code))); const url="https://yepython.pp.ua/?code="+encodeURIComponent(encoded);
   window.open(url,"_blank","noopener,noreferrer");
 });
 </script></body></html>
