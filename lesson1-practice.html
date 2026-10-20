@@ -68,10 +68,16 @@ body{background:linear-gradient(180deg,#edf6ff 0%,#f7f9ff 55%,#fff 100%);color:#
 .practice-cell-input:focus{outline:3px solid #8fc3e7;outline-offset:1px}
 .practice-save-note{font-size:12px;color:#688099;margin-top:10px}
 @media(max-width:700px){.practice-edit-wrap{overflow-x:auto}}
+</style><style id="practice-sticky-style">
+.practice-sticky-nav{position:sticky;top:8px;z-index:40;display:flex;gap:8px;overflow-x:auto;margin:12px 0 20px;padding:9px;background:rgba(248,251,255,.96);backdrop-filter:blur(10px);border:1px solid #d7e6f7;border-radius:14px;box-shadow:0 8px 24px rgba(67,104,140,.12);scrollbar-width:thin}
+.practice-sticky-nav a{flex:0 0 auto;text-decoration:none;padding:9px 13px;border-radius:10px;color:#476781;background:#fff;border:1px solid #dbe7f2;font-size:13px;font-weight:800;white-space:nowrap}
+.practice-sticky-nav a:hover,.practice-sticky-nav a.is-current{background:#2464b1;color:#fff;border-color:#2464b1}
+.lesson section[id="practice"],.lesson section[id^="task-"]{scroll-margin-top:92px}
+@media(max-width:700px){.practice-sticky-nav{top:6px;margin:10px 0 16px;padding:7px}.practice-sticky-nav a{padding:8px 11px;font-size:12px}}
 </style></head><body data-grade="9" data-lesson="1"><a href="#lesson-title" class="skip">До вмісту</a><div id="student-navigation"><a class="header-login" href="class9.html">← Уроки 9 класу</a></div>
-<main id="lesson-title" tabindex="-1" class="shell lesson"><div id="top" class="lesson-hero"><p class="eyebrow">HUB 56 · 9 клас · Урок №1</p><h1>Практичні завдання</h1><p>Інформаційні системи, програмне забезпечення та ліцензії</p></div>
+<main id="lesson-title" tabindex="-1" class="shell lesson"><div id="top" class="lesson-hero"><p class="eyebrow">HUB 56 · 9 клас · Урок №1</p><h1>Практичні завдання</h1><p>Інформаційні системи, програмне забезпечення та ліцензії</p></div><nav class="practice-sticky-nav" aria-label="Навігація практичними завданнями"><a href="#practice" class="is-current">Завдання 1</a><a href="#task-2">Завдання 2</a><a href="#task-3">Завдання 3</a></nav>
 <section id="practice" class="lesson-card"><h2>Завдання 1. Дослідіть інформаційну систему установи.</h2>
-<div class="task-nav" aria-label="Практичні завдання"><a href="#practice">Завдання 1</a><a href="#task-2">Завдання 2</a><a href="#task-3">Завдання 3</a></div>
+
 <p><strong>Умова.</strong> Дослідіть інформаційну систему установи.</p>
 <h3>Алгоритм виконання</h3>
 <ol class="code-steps">
@@ -124,4 +130,6 @@ body{background:linear-gradient(180deg,#edf6ff 0%,#f7f9ff 55%,#fff 100%);color:#
 for(const input of inputs){const key="hub56:"+input.dataset.saveKey;const saved=localStorage.getItem(key);if(saved!==null)input.value=saved;input.addEventListener("input",()=>localStorage.setItem(key,input.value));}
 document.querySelectorAll("[data-clear-table-prefix]").forEach(button=>button.addEventListener("click",()=>{const prefix=button.dataset.clearTablePrefix;inputs.filter(input=>input.dataset.saveKey.startsWith(prefix)).forEach(input=>{input.value="";localStorage.removeItem("hub56:"+input.dataset.saveKey)});}));
 })();
+</script><script id="practice-sticky-script">
+(()=>{const nav=document.querySelector(".practice-sticky-nav");if(!nav)return;const links=[...nav.querySelectorAll("a")];const sections=links.map(a=>document.querySelector(a.hash)).filter(Boolean);const activate=id=>{links.forEach(a=>a.classList.toggle("is-current",a.hash==="#"+id));const current=links.find(a=>a.hash==="#"+id);current?.scrollIntoView({block:"nearest",inline:"nearest"})};links.forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const target=document.querySelector(a.hash);if(!target)return;activate(target.id);target.scrollIntoView({behavior:"smooth",block:"start"});history.replaceState(null,"",a.hash)}));const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(visible)activate(visible.target.id)},{rootMargin:"-18% 0px -62% 0px",threshold:[0,.15,.35,.6]});sections.forEach(s=>observer.observe(s));})();
 </script></body></html>
