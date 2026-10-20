@@ -6,12 +6,15 @@
 <style>
 .answers-row.long-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .answers-row.long-options label{min-width:0}.answers-row.long-options span{width:auto;height:auto;min-height:66px;padding:12px 14px;text-align:center;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
-@media(max-width:760px){.answers-row.long-options{grid-template-columns:1fr}}
+.answers-row.four-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.answers-row.four-options label{min-width:0}.answers-row.four-options span{width:auto;height:auto;min-height:72px;padding:12px 10px;text-align:center;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+@media(max-width:900px){.answers-row.four-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.answers-row.long-options,.answers-row.four-options{grid-template-columns:1fr}}
 </style></head>
 <body data-grade="9" data-lesson="6"><a class="skip" href="#main">До основного вмісту</a><div id="student-navigation"><a href="class9.html">← 9 клас</a></div>
 <main class="sheet" id="main">
 <div class="sheet-top"><a href="lesson6-interactive.html">← Інтерактивні завдання уроку №6</a><span>HUB 56 <span aria-hidden="true">/</span> ІНФОРМАТИКА <span aria-hidden="true">/</span> 9 КЛАС</span></div>
-<header class="sheet-cover"><div class="cover-copy"><span class="sheet-kicker">ІНТЕРАКТИВНИЙ РОБОЧИЙ АРКУШ · УРОК №6</span><h1>Програмне <em>забезпечення</em></h1><p>Узагальни знання про види програм, системні вимоги, ліцензії, драйвери та безпечне встановлення.</p><div class="cover-facts"><span>4 змістові етапи</span><span>8 перевірюваних відповідей</span><span>Без оцінювання</span></div></div>
+<header class="sheet-cover"><div class="cover-copy"><span class="sheet-kicker">ІНТЕРАКТИВНИЙ РОБОЧИЙ АРКУШ · УРОК №6</span><h1>Програмне <em>забезпечення</em></h1><p>Узагальни знання про види програм, системні вимоги, ліцензії, драйвери та безпечне встановлення.</p><div class="cover-facts"><span>8 змістових етапів</span><span>20 перевірюваних відповідей</span><span>Підсумкове закріплення</span></div></div>
 <div class="cover-art" aria-hidden="true"><div class="terminal-head"><i></i><i></i><i></i><span>software.summary</span></div><pre><span class="tk-blue">system</span> → OS + drivers
 <span class="tk-purple">apps</span> → user tasks
 <span class="tk-yellow">license</span> → rules
@@ -19,29 +22,132 @@
 
 <div class="sheet-layout">
 <aside class="sheet-aside"><div class="aside-inner"><span class="aside-caption">ТВІЙ МАРШРУТ</span><nav class="sheet-steps" aria-label="Етапи робочого аркуша">
-<a href="#discover" class="is-current"><span>01</span><strong>Досліди</strong></a>
-<a href="#connect"><span>02</span><strong>Зрозумій</strong></a>
-<a href="#apply"><span>03</span><strong>Застосуй</strong></a>
-<a href="#restore"><span>04</span><strong>Закріпи</strong></a>
-</nav><div class="aside-progress"><div class="aside-progress-head"><span>Перевірено етапів</span><strong id="progress-label">0 / 4</strong></div><div class="progress-track" role="progressbar" aria-label="Пройдені етапи" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="sheet-progress-track"><span id="progress-fill"></span></div><p>Перевіряй кожен етап — прогрес оновиться автоматично.</p></div></div></aside>
+<a href="#software" class="is-current"><span>01</span><strong>Види ПЗ</strong></a>
+<a href="#requirements"><span>02</span><strong>Вимоги</strong></a>
+<a href="#compatibility"><span>03</span><strong>Сумісність</strong></a>
+<a href="#licenses"><span>04</span><strong>Ліцензії</strong></a>
+<a href="#drivers"><span>05</span><strong>Драйвери</strong></a>
+<a href="#install"><span>06</span><strong>Безпека</strong></a>
+<a href="#accessibility"><span>07</span><strong>Доступність</strong></a>
+<a href="#final"><span>08</span><strong>Фінал</strong></a>
+</nav><div class="aside-progress"><div class="aside-progress-head"><span>Перевірено етапів</span><strong id="progress-label">0 / 8</strong></div><div class="progress-track" role="progressbar" aria-label="Пройдені етапи" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="sheet-progress-track"><span id="progress-fill"></span></div><p>Це підсумковий аркуш: виконай усі вісім етапів, щоб повторити весь розділ.</p></div></div></aside>
 
 <div class="sheet-content">
-<section class="sheet-section" id="discover"><div class="section-heading"><span class="section-number">01</span><div><p>ДОСЛІДЖУЄМО</p><h2>Види програмного забезпечення</h2></div></div><p class="section-lead">Визнач, до якого виду програмного забезпечення належить операційна система.</p><form class="sheet-task" data-task="discover"><fieldset><legend>До якого виду ПЗ належить Windows 11?</legend><div class="answers-row long-options"><label><input type="radio" name="tool" value="magnifier"><span>Системне програмне забезпечення</span></label><label><input type="radio" name="tool" value="captions"><span>Прикладне програмне забезпечення</span></label><label><input type="radio" name="tool" value="keyboard"><span>Графічний редактор</span></label></div></fieldset><div class="task-footer"><button type="submit">Перевірити відповідь <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+<section class="sheet-section" id="software"><div class="section-heading"><span class="section-number">01</span><div><p>КЛАСИФІКУЄМО</p><h2>Види програмного забезпечення</h2></div></div>
+<p class="section-lead">Визнач призначення програм і розрізняй системне та прикладне ПЗ.</p>
+<form class="sheet-task" data-task="software">
+<fieldset><legend>1. До якого виду ПЗ належить Windows 11?</legend><div class="answers-row four-options">
+<label><input type="radio" name="soft1" value="a"><span>Прикладне ПЗ</span></label>
+<label><input type="radio" name="soft1" value="b"><span>Системне ПЗ</span></label>
+<label><input type="radio" name="soft1" value="c"><span>Система програмування</span></label>
+<label><input type="radio" name="soft1" value="d"><span>Графічний редактор</span></label>
+</div></fieldset>
+<fieldset><legend>2. Яка програма належить до прикладного ПЗ?</legend><div class="answers-row four-options">
+<label><input type="radio" name="soft2" value="a"><span>Драйвер принтера</span></label>
+<label><input type="radio" name="soft2" value="b"><span>Ядро ОС</span></label>
+<label><input type="radio" name="soft2" value="c"><span>Microsoft Word</span></label>
+<label><input type="radio" name="soft2" value="d"><span>Файлова система</span></label>
+</div></fieldset>
+<div class="task-footer"><button type="submit">Перевірити етап <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
 
-<section class="sheet-section" id="connect"><div class="section-heading"><span class="section-number">02</span><div><p>ВСТАНОВЛЮЄМО ЗВ'ЯЗКИ</p><h2>Системні вимоги</h2></div></div><p class="section-lead">Порівняй характеристики комп’ютера з вимогами програми.</p><form class="sheet-task" data-task="connect"><div class="match-list">
-<label><span class="code-chip">ОС</span><select><option value="">Обери</option><option value="vision">Windows 11 відповідає вимозі Windows 10/11</option><option value="hearing">8 ГБ більше за мінімальні 4 ГБ</option><option value="motor">20 ГБ більше за потрібні 12 ГБ</option></select></label>
-<label><span class="code-chip">Оперативна пам’ять</span><select><option value="">Обери</option><option value="vision">Windows 11 відповідає вимозі Windows 10/11</option><option value="hearing">8 ГБ більше за мінімальні 4 ГБ</option><option value="motor">20 ГБ більше за потрібні 12 ГБ</option></select></label>
-<label><span class="code-chip">Вільне місце</span><select><option value="">Обери</option><option value="vision">Windows 11 відповідає вимозі Windows 10/11</option><option value="hearing">8 ГБ більше за мінімальні 4 ГБ</option><option value="motor">20 ГБ більше за потрібні 12 ГБ</option></select></label>
-</div><div class="task-footer"><button type="submit">Перевірити пари <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+<section class="sheet-section" id="requirements"><div class="section-heading"><span class="section-number">02</span><div><p>ПОРІВНЮЄМО</p><h2>Системні вимоги</h2></div></div>
+<p class="section-lead">Комп’ютер: Windows 11, 8 ГБ RAM, 20 ГБ вільного місця, x64. Програмі потрібно Windows 10/11, 4 ГБ RAM, 12 ГБ місця, x64.</p>
+<form class="sheet-task" data-task="requirements"><div class="match-list">
+<label><span class="code-chip">Операційна система</span><select><option value="">Обери висновок</option><option value="ok-os">Вимога виконана</option><option value="bad-os">Вимога не виконана</option><option value="unknown-os">Недостатньо даних</option></select></label>
+<label><span class="code-chip">Оперативна пам’ять</span><select><option value="">Обери висновок</option><option value="bad-ram">Недостатньо</option><option value="ok-ram">Достатньо</option><option value="eq-ram">Потрібно рівно 4 ГБ</option></select></label>
+<label><span class="code-chip">Вільне місце</span><select><option value="">Обери висновок</option><option value="unknown-space">Не можна визначити</option><option value="bad-space">Недостатньо</option><option value="ok-space">Достатньо</option></select></label>
+</div><div class="task-footer"><button type="submit">Перевірити порівняння <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
 
-<section class="sheet-section" id="apply"><div class="section-heading"><span class="section-number">03</span><div><p>ЗАСТОСОВУЄМО</p><h2>Ліцензії</h2></div></div><p class="section-lead">Визнач тип ліцензії для безкоштовного використання програми.</p><form class="sheet-task" data-task="apply"><fieldset><legend>Який тип поширення означає, що програмою можна користуватися безкоштовно?</legend><div class="answers-row long-options"><label><input type="radio" name="design" value="all"><span>Freeware</span></label><label><input type="radio" name="design" value="single"><span>Комерційна</span></label><label><input type="radio" name="design" value="fixed"><span>Trial</span></label></div></fieldset><div class="task-footer"><button type="submit">Перевірити відповідь <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+<section class="sheet-section" id="compatibility"><div class="section-heading"><span class="section-number">03</span><div><p>АНАЛІЗУЄМО</p><h2>Сумісність програм</h2></div></div>
+<p class="section-lead">Застосуй поняття сумісності та кросплатформності в конкретних ситуаціях.</p>
+<form class="sheet-task" data-task="compatibility">
+<fieldset><legend>1. Програма має версії для Windows, macOS і Linux. Яку властивість це демонструє?</legend><div class="answers-row four-options">
+<label><input type="radio" name="comp1" value="a"><span>Деінсталяція</span></label>
+<label><input type="radio" name="comp1" value="b"><span>Архівування</span></label>
+<label><input type="radio" name="comp1" value="c"><span>Зворотна сумісність</span></label>
+<label><input type="radio" name="comp1" value="d"><span>Кросплатформність</span></label>
+</div></fieldset>
+<fieldset><legend>2. Windows 11 запускає програму, створену для старішої версії Windows. Це приклад…</legend><div class="answers-row four-options">
+<label><input type="radio" name="comp2" value="a"><span>зворотної сумісності</span></label>
+<label><input type="radio" name="comp2" value="b"><span>форматування</span></label>
+<label><input type="radio" name="comp2" value="c"><span>OEM-ліцензування</span></label>
+<label><input type="radio" name="comp2" value="d"><span>архівування</span></label>
+</div></fieldset>
+<div class="task-footer"><button type="submit">Перевірити етап <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
 
-<section class="sheet-section" id="restore"><div class="section-heading"><span class="section-number">04</span><div><p>ЗАКРІПЛЮЄМО ЗНАННЯ</p><h2>Безпечне встановлення</h2></div></div><p class="section-lead">Зістав ситуацію з правильною дією.</p><form class="sheet-task" data-task="restore"><div class="match-list">
-<label><span>Невідомий сайт пропонує вимкнути антивірус</span><select><option value="">Обери</option><option value="captions">Відмовитися від встановлення</option><option value="magnifier">Перевірити сумісний драйвер</option><option value="keyboard">Використати офіційний сайт або магазин</option></select></label>
-<label><span>Принтер визначається, але працює неправильно</span><select><option value="">Обери</option><option value="captions">Відмовитися від встановлення</option><option value="magnifier">Перевірити сумісний драйвер</option><option value="keyboard">Використати офіційний сайт або магазин</option></select></label>
-<label><span>Потрібно безпечно отримати програму</span><select><option value="">Обери</option><option value="captions">Відмовитися від встановлення</option><option value="magnifier">Перевірити сумісний драйвер</option><option value="keyboard">Використати офіційний сайт або магазин</option></select></label>
-</div><div class="task-footer"><button type="submit">Перевірити відповіді <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+<section class="sheet-section" id="licenses"><div class="section-heading"><span class="section-number">04</span><div><p>ВСТАНОВЛЮЄМО ВІДПОВІДНІСТЬ</p><h2>Типи ліцензій</h2></div></div>
+<p class="section-lead">Зістав ситуацію з відповідним типом поширення програмного забезпечення.</p>
+<form class="sheet-task" data-task="licenses"><div class="match-list">
+<label><span>Програмою можна користуватися безкоштовно</span><select><option value="">Обери тип</option><option value="commercial">Комерційна</option><option value="freeware">Freeware</option><option value="trial">Trial</option><option value="shareware">Shareware</option></select></label>
+<label><span>Повна версія безкоштовна лише 30 днів</span><select><option value="">Обери тип</option><option value="shareware">Shareware</option><option value="commercial">Комерційна</option><option value="trial">Trial</option><option value="freeware">Freeware</option></select></label>
+<label><span>Для повноцінного використання потрібно придбати ліцензію</span><select><option value="">Обери тип</option><option value="freeware">Freeware</option><option value="trial">Trial</option><option value="commercial">Комерційна</option><option value="shareware">Shareware</option></select></label>
+</div><div class="task-footer"><button type="submit">Перевірити ліцензії <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
 
-<section class="sheet-results" aria-labelledby="results-title"><div class="results-icon" aria-hidden="true">✓</div><div><p class="aside-caption">ТВІЙ РЕЗУЛЬТАТ</p><h2 id="results-title">Підсумок роботи</h2><p id="sheet-result" role="status">Виконай і перевір усі чотири етапи — тут з'явиться загальний результат.</p></div><button id="restart-all" type="button" class="restart-button">Почати заново</button></section>
-<p class="sheet-disclaimer">Навчальний аркуш HUB 56. Відповіді перевіряються лише у браузері, не зберігаються та не використовуються для виставлення оцінок. Автор навчальних матеріалів: Левін М. П. Матеріал спеціально розроблений для гімназії №56.</p>
+<section class="sheet-section" id="drivers"><div class="section-heading"><span class="section-number">05</span><div><p>ВИРІШУЄМО ПРОБЛЕМУ</p><h2>Драйвери та деінсталяція</h2></div></div>
+<p class="section-lead">Оціни типові ситуації, пов’язані з обладнанням і встановленими програмами.</p>
+<form class="sheet-task" data-task="drivers">
+<fieldset><legend>1. Принтер визначається системою, але друкує неправильно. Що перевірити насамперед?</legend><div class="answers-row four-options">
+<label><input type="radio" name="drv1" value="a"><span>Заставку Windows</span></label>
+<label><input type="radio" name="drv1" value="b"><span>Ярлик браузера</span></label>
+<label><input type="radio" name="drv1" value="c"><span>Сумісний драйвер</span></label>
+<label><input type="radio" name="drv1" value="d"><span>Шрифт документа</span></label>
+</div></fieldset>
+<fieldset><legend>2. Як правильно видалити встановлену програму?</legend><div class="answers-row four-options">
+<label><input type="radio" name="drv2" value="a"><span>Видалити ярлик</span></label>
+<label><input type="radio" name="drv2" value="b"><span>Скористатися деінсталятором ОС або програми</span></label>
+<label><input type="radio" name="drv2" value="c"><span>Перейменувати папку</span></label>
+<label><input type="radio" name="drv2" value="d"><span>Видалити випадкові файли з Program Files</span></label>
+</div></fieldset>
+<div class="task-footer"><button type="submit">Перевірити етап <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+
+<section class="sheet-section" id="install"><div class="section-heading"><span class="section-number">06</span><div><p>ПРАЦЮЄМО БЕЗПЕЧНО</p><h2>Безпечне встановлення</h2></div></div>
+<p class="section-lead">Розпізнай небезпечні дії та обери надійний спосіб отримання програми.</p>
+<form class="sheet-task" data-task="install">
+<fieldset><legend>1. Невідомий сайт пропонує «безкоштовну» платну програму й просить вимкнути антивірус. Що робити?</legend><div class="answers-row four-options">
+<label><input type="radio" name="safe1" value="a"><span>Встановити, якщо файл невеликий</span></label>
+<label><input type="radio" name="safe1" value="b"><span>Вимкнути антивірус на хвилину</span></label>
+<label><input type="radio" name="safe1" value="c"><span>Продовжити, але не оновлювати</span></label>
+<label><input type="radio" name="safe1" value="d"><span>Відмовитися й знайти офіційне джерело</span></label>
+</div></fieldset>
+<fieldset><legend>2. Яке джерело найдоречніше для завантаження програми?</legend><div class="answers-row four-options">
+<label><input type="radio" name="safe2" value="a"><span>Офіційний сайт розробника або надійний магазин</span></label>
+<label><input type="radio" name="safe2" value="b"><span>Будь-який форум</span></label>
+<label><input type="radio" name="safe2" value="c"><span>Невідоме файлове сховище</span></label>
+<label><input type="radio" name="safe2" value="d"><span>Посилання з випадкового коментаря</span></label>
+</div></fieldset>
+<div class="task-footer"><button type="submit">Перевірити безпеку <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+
+<section class="sheet-section" id="accessibility"><div class="section-heading"><span class="section-number">07</span><div><p>РОБИМО ДОСТУПНІШИМ</p><h2>Спеціальні можливості</h2></div></div>
+<p class="section-lead">Зістав потребу користувача з відповідною технологією або налаштуванням.</p>
+<form class="sheet-task" data-task="accessibility"><div class="match-list">
+<label><span>Складно читати дрібний текст</span><select><option value="">Обери</option><option value="voice">Голосове введення</option><option value="zoom">Екранна лупа / масштабування</option><option value="captions">Динамічні субтитри</option><option value="driver">Драйвер пристрою</option></select></label>
+<label><span>Складно користуватися клавіатурою</span><select><option value="">Обери</option><option value="captions">Динамічні субтитри</option><option value="driver">Драйвер пристрою</option><option value="voice">Голосове введення</option><option value="zoom">Екранна лупа</option></select></label>
+<label><span>Складно сприймати інформацію на слух</span><select><option value="">Обери</option><option value="zoom">Екранна лупа</option><option value="voice">Голосове введення</option><option value="driver">Драйвер принтера</option><option value="captions">Динамічні субтитри</option></select></label>
+</div><div class="task-footer"><button type="submit">Перевірити відповідності <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+
+<section class="sheet-section" id="final"><div class="section-heading"><span class="section-number">08</span><div><p>ФІНАЛЬНЕ ЗАКРІПЛЕННЯ</p><h2>Змішаний мінітест</h2></div></div>
+<p class="section-lead">Три фінальні питання охоплюють різні частини розділу.</p>
+<form class="sheet-task" data-task="final">
+<fieldset><legend>1. Що робить технологія Plug and Play?</legend><div class="answers-row four-options">
+<label><input type="radio" name="final1" value="a"><span>Автоматично розпізнає підключений пристрій і намагається налаштувати драйвер</span></label>
+<label><input type="radio" name="final1" value="b"><span>Робить усі програми безкоштовними</span></label>
+<label><input type="radio" name="final1" value="c"><span>Видаляє всі драйвери</span></label>
+<label><input type="radio" name="final1" value="d"><span>Змінює операційну систему</span></label>
+</div></fieldset>
+<fieldset><legend>2. Чому простого копіювання папки програми часто недостатньо для інсталяції?</legend><div class="answers-row four-options">
+<label><input type="radio" name="final2" value="a"><span>Бо папки можна копіювати лише на флешку</span></label>
+<label><input type="radio" name="final2" value="b"><span>Бо Program Files призначена тільки для фото</span></label>
+<label><input type="radio" name="final2" value="c"><span>Інсталяція також створює службові записи й налаштовує взаємодію з ОС</span></label>
+<label><input type="radio" name="final2" value="d"><span>Бо інсталяція потрібна лише операційним системам</span></label>
+</div></fieldset>
+<fieldset><legend>3. Який засіб допомагає збільшити дрібний текст та елементи екрана?</legend><div class="answers-row four-options">
+<label><input type="radio" name="final3" value="a"><span>Архіватор</span></label>
+<label><input type="radio" name="final3" value="b"><span>Екранна лупа</span></label>
+<label><input type="radio" name="final3" value="c"><span>Деінсталятор</span></label>
+<label><input type="radio" name="final3" value="d"><span>Драйвер принтера</span></label>
+</div></fieldset>
+<div class="task-footer"><button type="submit">Завершити аркуш <span aria-hidden="true">→</span></button><p class="task-feedback" role="status"></p></div></form></section>
+
+<section class="sheet-results" aria-labelledby="results-title"><div class="results-icon" aria-hidden="true">✓</div><div><p class="aside-caption">ТВІЙ РЕЗУЛЬТАТ</p><h2 id="results-title">Підсумок роботи</h2><p id="sheet-result" role="status">Виконай і перевір усі вісім етапів — тут з'явиться загальний результат.</p></div><button id="restart-all" type="button" class="restart-button">Почати заново</button></section>
+<p class="sheet-disclaimer">Розширений підсумковий навчальний аркуш HUB 56. Відповіді перевіряються лише у браузері та не використовуються для виставлення оцінок. Автор навчальних матеріалів: Левін М. П. Матеріал спеціально розроблений для гімназії №56.</p>
 </div></div></main><footer class="footer"><div class="shell">HUB 56 · Інформатика · 9 клас</div></footer></body></html>
