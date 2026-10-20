@@ -33,5 +33,6 @@ const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e
 sections.forEach(s=>observer.observe(s));
 if(location.hash){const target=document.querySelector(location.hash);const details=target?.querySelector("details");if(details)details.open=true;setTimeout(()=>target?.scrollIntoView({block:"start"}),0)}
 })();
-</script><!-- deploy-refresh-lesson5 -->
+</script>
+<!-- deploy-refresh-lesson5-final -->
 </body></html>
