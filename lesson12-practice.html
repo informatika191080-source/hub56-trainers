@@ -60,6 +60,29 @@ body{background:linear-gradient(180deg,#edf6ff 0%,#f7f9ff 55%,#fff 100%);color:#
 .terminology{border-left:4px solid #55a6de;background:#eef7ff;border-radius:9px;padding:12px 15px;margin:12px 0}.terminology p{margin:0 0 8px!important}.terminology ul{margin:6px 0 4px;padding-left:22px}.terminology li{margin:6px 0;line-height:1.6}.terminology code{overflow-wrap:anywhere}
 .task-summary{margin:18px 0;border:1px solid #cae0f5;border-radius:13px;background:#f1f8ff;color:#204469}.task-summary summary{cursor:pointer;font-weight:800;padding:13px 17px}.task-summary-content{padding:0 17px 15px;line-height:1.8}.task-summary-content p{margin:8px 0}.task-summary code{overflow-wrap:anywhere}
 @media(min-width:651px) and (max-width:1050px){.lesson-nav{grid-template-columns:repeat(3,minmax(0,1fr))}}.lesson-nav a{display:flex;align-items:center;justify-content:center;line-height:1.4;min-height:55px}
+.practice-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:28px;align-items:start}
+.practice-aside{position:sticky;top:16px;align-self:start}
+.practice-aside-inner{border-right:1px solid #dfe8f2;padding:8px 18px 18px 0}
+.practice-aside-caption{display:block;font-size:11px;font-weight:900;letter-spacing:.13em;color:#7088a0;margin-bottom:12px}
+.practice-side-nav{display:grid;gap:6px}
+.practice-side-nav a{display:flex;align-items:center;gap:10px;padding:11px 10px;border-radius:10px;color:#506b87;text-decoration:none;font-size:13px;font-weight:750}
+.practice-side-nav a span{display:grid;place-items:center;min-width:28px;height:28px;background:#e8eff8;color:#406b95;border-radius:8px;font-size:11px;font-weight:850}
+.practice-side-nav a:hover,.practice-side-nav a.is-current{background:#e8f1ff;color:#1c5492}
+.practice-side-nav a.is-current span{background:#2464b1;color:#fff}
+.practice-content{min-width:0}
+.lesson section[id="practice"],.lesson section[id^="task-"]{scroll-margin-top:24px}
+@media(max-width:820px){
+ .practice-layout{display:block}
+ .practice-aside{position:sticky;top:6px;z-index:40;margin:10px 0 16px}
+ .practice-aside-inner{border:1px solid #d7e6f7;border-radius:14px;padding:8px;background:rgba(248,251,255,.96);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(67,104,140,.12)}
+ .practice-aside-caption{display:none}
+ .practice-side-nav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin}
+ .practice-side-nav a{flex:0 0 auto;background:#fff;border:1px solid #dbe7f2;padding:8px 10px;white-space:nowrap}
+ .practice-side-nav a strong{font-size:12px}
+ .practice-side-nav a span{min-width:24px;height:24px}
+ .lesson section[id="practice"],.lesson section[id^="task-"]{scroll-margin-top:82px}
+}
+
 </style><style>.section-menu{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0 22px}.section-menu a,.section-bottom a{display:inline-flex;align-items:center;padding:11px 15px;background:#e6f3ff;color:#175d9d;border:1px solid #bedff6;border-radius:12px;font-weight:750;text-decoration:none}.section-bottom{margin:30px 0}.back-top{position:fixed;bottom:17px;right:18px;background:#176ec3;color:#fff;padding:11px 16px;border-radius:999px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px #315f9640;z-index:3}.module-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0 45px}.module-index a{display:block;background:#fff;border:1px solid #dae7f5;border-radius:19px;padding:24px;color:#244e7e;text-decoration:none;box-shadow:0 8px 25px #a3bbd526}.module-index strong{display:block;font-size:22px;margin-bottom:8px}.module-index small{display:block;font-size:14px;line-height:1.6;color:#526b8c}@media(max-width:600px){.module-index{grid-template-columns:1fr}.back-top{bottom:12px;right:12px}}</style></head><body data-grade="9" data-lesson="12"><a href="#lesson-title" class="skip">До вмісту</a><div id="student-navigation"><a class="header-login" href="class9.html">← Уроки 9 класу</a></div>
 <main id="lesson-title" tabindex="-1" class="shell lesson"><div id="top" class="lesson-hero"><p class="eyebrow">HUB 56 · 9 клас · Урок №12</p><h1>Практичні завдання</h1><p>Використання стилів у текстових документах. Структура текстового документа</p></div>
 
