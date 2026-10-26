@@ -5,12 +5,13 @@
  if(!root)return;
  const grade=Number(document.body.dataset.grade);
  const lesson=Number(document.body.dataset.lesson||0);
+ const lessonLabel=document.body.dataset.lessonLabel||String(lesson);
  const courseRoot=document.body.dataset.courseRoot||"";
  if(![5,6,7,8,9].includes(grade))return;
  const current=location.pathname.split("/").pop()||"index.html";
  const classPath=courseRoot+"class"+grade+".html";
  const sections=lesson>0?[
-  ["Урок №"+lesson,"pilot-lesson"+lesson+".html"],
+  ["Урок №"+lessonLabel,"pilot-lesson"+lesson+".html"],
   ["Теорія","lesson"+lesson+"-theory.html"],
   ["Питання","lesson"+lesson+"-questions.html"],
   ["Практика","lesson"+lesson+"-practice.html"],
