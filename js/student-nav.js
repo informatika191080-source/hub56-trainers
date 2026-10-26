@@ -5,9 +5,10 @@
  if(!root)return;
  const grade=Number(document.body.dataset.grade);
  const lesson=Number(document.body.dataset.lesson||0);
+ const courseRoot=document.body.dataset.courseRoot||"";
  if(![5,6,7,8,9].includes(grade))return;
  const current=location.pathname.split("/").pop()||"index.html";
- const classPath="class"+grade+".html";
+ const classPath=courseRoot+"class"+grade+".html";
  const sections=lesson>0?[
   ["Урок №"+lesson,"pilot-lesson"+lesson+".html"],
   ["Теорія","lesson"+lesson+"-theory.html"],
@@ -19,7 +20,7 @@
  const items=[["Уроки "+grade+" класу",classPath],...sections];
  const header=document.createElement("header");header.className="student-header";
  const bar=document.createElement("div");bar.className="shell student-bar";
- const brand=document.createElement("a");brand.className="student-brand";brand.href="index.html";brand.setAttribute("aria-label","HUB 56 — повернутися на головну");
+ const brand=document.createElement("a");brand.className="student-brand";brand.href=courseRoot+"index.html";brand.setAttribute("aria-label","HUB 56 — повернутися на головну");
  const logo=document.createElement("span");logo.className="brand-mark";logo.textContent="56";logo.setAttribute("aria-hidden","true");
  const brandText=document.createElement("span");brandText.innerHTML='<strong class="student-brand-title">HUB 56</strong><small class="student-brand-sub">Інформатика · '+grade+' клас</small>';
  brand.append(logo,brandText);bar.append(brand);

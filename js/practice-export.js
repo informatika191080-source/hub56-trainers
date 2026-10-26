@@ -84,7 +84,7 @@ ready(()=>{
  function esc(s){return String(s).replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))}
  function exportHtml(){
    const clone=content.cloneNode(true);
-   clone.querySelectorAll("button,.practice-save-note,.lesson-actions,.back-top").forEach(el=>el.remove());
+   clone.querySelectorAll("button,.practice-save-note,.lesson-actions,.back-top,[data-export-ignore]").forEach(el=>el.remove());
    clone.querySelectorAll("textarea,input,select").forEach(el=>{
      let val="";
      if(el.matches("select")){
